@@ -10,11 +10,11 @@ trait HasValues
 {
     use HasKey;
 
-    public function get(BackedEnum | int | string $key): mixed
+    public function get(BackedEnum|int|string $key): mixed
     {
         $key = $this->resolveKey($key);
 
-        $main = $this->key . '.' . $key;
+        $main    = $this->key . '.' . $key;
         $default = $this->default ? $this->default . '.' . $key : null;
 
         if ($this->default) {
