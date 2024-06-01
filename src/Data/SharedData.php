@@ -11,6 +11,5 @@ class SharedData
         public bool $align,
         public array $aliases,
         public SmartPunctuationData $smartPunctuation,
-    ) {
-    }
+    ) {}
 }
