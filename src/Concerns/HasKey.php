@@ -8,7 +8,7 @@ use BackedEnum;
 
 trait HasKey
 {
-    protected function resolveKey(int | string | BackedEnum $key): int | string
+    protected function resolveKey(BackedEnum|int|string $key): int|string
     {
         if ($key instanceof BackedEnum) {
             return $key->value ?? $key->name;

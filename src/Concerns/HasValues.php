@@ -10,9 +10,9 @@ trait HasValues
 {
     use HasKey;
 
-    public function get(int | string | BackedEnum $key): mixed
+    public function get(BackedEnum|int|string $key): mixed
     {
-        if (!is_null($this->default)) {
+        if (! is_null($this->default)) {
             $default = $this->default . '.' . $this->resolveKey($key);
         }
 

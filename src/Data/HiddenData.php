@@ -10,6 +10,5 @@ class HiddenData
         public PushableData $plugins,
         public PushableData $packages,
         public NonPushableData $map,
-    ) {
-    }
+    ) {}
 }
