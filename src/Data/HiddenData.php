@@ -9,6 +9,7 @@ class HiddenData
     public function __construct(
         public PushableData $plugins,
         public PushableData $packages,
-        public readonly array $map,
-    ) {}
+        public NonPushableData $map,
+    ) {
+    }
 }

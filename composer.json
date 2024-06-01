@@ -36,6 +36,10 @@
         "illuminate/support": "^10.0 || ^11.0",
         "laravel-lang/locale-list": "^1.4"
     },
+    "require-dev": {
+        "orchestra/testbench": "^9.1",
+        "pestphp/pest": "^2.34"
+    },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
@@ -43,11 +47,17 @@
             "LaravelLang\\Config\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "config": {
         "allow-plugins": {
             "dragon-code/codestyler": true,
             "ergebnis/composer-normalize": true,
             "friendsofphp/php-cs-fixer": true,
+            "pestphp/pest-plugin": true,
             "symfony/thanks": true
         },
         "preferred-install": "dist",
@@ -59,5 +69,8 @@
                 "LaravelLang\\Config\\ServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest"
     }
 }

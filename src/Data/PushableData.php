@@ -4,28 +4,35 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Data;
 
+use BackedEnum;
+use LaravelLang\Config\Concerns\HasValues;
+
 class PushableData
 {
-    public function __construct(
-        public array $items
-    ) {}
+    use HasValues;
 
-    public function get(): array
+    public function __construct(
+        protected readonly string $key,
+        protected readonly ?string $default = null
+    ) {
+    }
+
+    public function all(): array
     {
-        return $this->items;
+        return config($this->key, config($this->default));
     }
 
     public function push(mixed $value): static
     {
-        $this->items[] = $value;
+        config()->push($this->key, $value);
 
         return $this;
     }
 
-    public function set(int|string $key, mixed $value): static
+    public function set(int | string | BackedEnum $key, mixed $value): mixed
     {
-        $this->items[$key] = $value;
+        config()->set($key = $this->key . '.' . $this->resolveKey($key), $value);
 
-        return $this;
+        return $this->get($key);
     }
 }

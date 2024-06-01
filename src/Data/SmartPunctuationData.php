@@ -9,6 +9,6 @@ class SmartPunctuationData
     public function __construct(
         public bool $enabled,
         public array $common,
-        public array $locales,
+        public NonPushableData $locales,
     ) {}
 }
