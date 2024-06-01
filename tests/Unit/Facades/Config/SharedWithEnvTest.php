@@ -15,49 +15,49 @@ test('inline', function () {
     expect(Config::shared()->inline)
         ->toBeBool()
         ->toBeTrue()
-        ->toBe('localization.inline');
+        ->toBe(config('localization.inline'));
 });
 
 test('align', function () {
     expect(Config::shared()->align)
         ->toBeBool()
         ->toBeFalse()
-        ->toBe('localization.align');
+        ->toBe(config('localization.align'));
 });
 
 test('aliases', function () {
     expect(Config::shared()->aliases)
         ->toBeArray()
-        ->toBe('localization.aliases');
+        ->toBe(config('localization.aliases'));
 });
 
 test('smart punctuation: enabled', function () {
-    expect(Config::shared()->smartPunctuation->enabled)
+    expect(Config::shared()->punctuation->enabled)
         ->toBeBool()
         ->toBeTrue()
-        ->toBe('localization.smart_punctuation.enabled');
+        ->toBe(config('localization.smart_punctuation.enabled'));
 });
 
 test('smart punctuation: common', function () {
-    expect(Config::shared()->smartPunctuation->common)
+    expect(Config::shared()->punctuation->common)
         ->toBeArray()
-        ->toBe('localization.smart_punctuation.common');
+        ->toBe(config('localization.smart_punctuation.common'));
 });
 
 test('smart punctuation: locales', function () {
-    expect(Config::shared()->smartPunctuation->locales->all())
+    expect(Config::shared()->punctuation->locales->all())
         ->toBeArray()
-        ->toBe('localization.smart_punctuation.locales');
+        ->toBe(config('localization.smart_punctuation.locales'));
 });
 
 test('smart punctuation: get locale', function () {
-    expect(Config::shared()->smartPunctuation->locales->get(Locale::French))
+    expect(Config::shared()->punctuation->locales->get(Locale::French))
         ->toBeArray()
-        ->toBe('localization.smart_punctuation.locales.' . Locale::French->value);
+        ->toBe(config('localization.smart_punctuation.locales.' . Locale::French->value));
 });
 
 test('smart punctuation: get default locale', function () {
-    expect(Config::shared()->smartPunctuation->locales->get(Locale::Zulu))
+    expect(Config::shared()->punctuation->locales->get(Locale::Zulu))
         ->toBeArray()
-        ->toBe('localization.smart_punctuation.common');
+        ->toBe(config('localization.smart_punctuation.common'));
 });

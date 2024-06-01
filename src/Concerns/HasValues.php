@@ -12,11 +12,12 @@ trait HasValues
 
     public function get(BackedEnum|int|string $key): mixed
     {
-        if (! is_null($this->default)) {
-            $default = $this->default . '.' . $this->resolveKey($key);
-        }
+        $key = $this->resolveKey($key);
 
-        return $this->value($this->key . '.' . $this->resolveKey($key), $default ?? null);
+        $main    = $this->key . '.' . $key;
+        $default = $this->default ? $this->default . '.' . $key : null;
+
+        return $this->value($main, $default);
     }
 
     protected function value(string $key, ?string $default = null): mixed

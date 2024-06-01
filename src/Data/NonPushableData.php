@@ -17,6 +17,6 @@ class NonPushableData
 
     public function all(): array
     {
-        return config($this->key, config($this->default, []));
+        return $this->value($this->key, $this->default);
     }
 }

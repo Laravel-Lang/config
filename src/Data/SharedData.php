@@ -10,6 +10,6 @@ class SharedData
         public bool $inline,
         public bool $align,
         public NonPushableData $aliases,
-        public SmartPunctuationData $smartPunctuation,
+        public SmartPunctuationData $punctuation,
     ) {}
 }

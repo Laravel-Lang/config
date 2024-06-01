@@ -17,10 +17,10 @@ class Config
     public static function shared(): SharedData
     {
         return new SharedData(
-            inline: static::value(Name::Shared, 'inline'),
-            align: static::value(Name::Shared, 'align'),
-            aliases: static::value(Name::Shared, 'aliases', object: PushableData::class),
-            smartPunctuation: static::smartPunctuation()
+            inline: (bool) static::value(Name::Shared, 'inline'),
+            align: (bool) static::value(Name::Shared, 'align'),
+            aliases: static::value(Name::Shared, 'aliases', object: NonPushableData::class),
+            punctuation: static::smartPunctuation()
         );
     }
 
@@ -43,22 +43,29 @@ class Config
                 Name::Shared,
                 'smart_punctuation.locales',
                 'smart_punctuation.common',
-                PushableData::class
+                NonPushableData::class
             ),
         );
     }
 
     protected static function value(Name $name, string $key, ?string $default = null, ?string $object = null): mixed
     {
+        $main    = $name->value . '.' . $key;
+        $default = $default ? $name->value . '.' . $default : null;
+
         if (is_null($object)) {
-            return static::repository($name->value . '.' . $key, $default);
+            return static::repository($main, static::repository($default));
         }
 
-        return new $object($name->value . '.' . $key, $name->value, '.' . $default);
+        return new $object($main, $default);
     }
 
-    protected static function repository(string $key, ?string $default = null): mixed
+    protected static function repository(?string $key, ?string $default = null): mixed
     {
+        if (is_null($key)) {
+            return null;
+        }
+
         if (! is_null($default)) {
             $default = static::repository($default);
         }

@@ -18,7 +18,7 @@ class PushableData
 
     public function all(): array
     {
-        return config($this->key, config($this->default));
+        return $this->value($this->key, $this->default);
     }
 
     public function push(mixed $value): static
