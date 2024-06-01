@@ -10,20 +10,26 @@ trait HasValues
 {
     use HasKey;
 
-    public function get(BackedEnum|int|string $key): mixed
+    public function get(BackedEnum | int | string $key): mixed
     {
         $key = $this->resolveKey($key);
 
-        $main    = $this->key . '.' . $key;
+        $main = $this->key . '.' . $key;
         $default = $this->default ? $this->default . '.' . $key : null;
+
+        if ($this->default) {
+            return $this->value($main, $default) ?? $this->value($this->default);
+        }
 
         return $this->value($main, $default);
     }
 
     protected function value(string $key, ?string $default = null): mixed
     {
-        return $default
-            ? config()->get($key, config()->get($default))
-            : config()->get($key);
+        if ($default) {
+            return config()->get($key) ?: config()->get($default);
+        }
+
+        return config()->get($key);
     }
 }
