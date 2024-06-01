@@ -19,7 +19,7 @@ return [
      * By default, `false`.
      */
 
-    'inline' => (bool) env('LOCALIZATION_INLINE', false),
+    'inline' => (bool)env('LOCALIZATION_INLINE', false),
 
     /*
      * Do arrays need to be aligned by keys before processing arrays?
@@ -27,7 +27,7 @@ return [
      * By default, true
      */
 
-    'align' => (bool) env('LOCALIZATION_ALIGN', true),
+    'align' => (bool)env('LOCALIZATION_ALIGN', true),
 
     /*
      * This option determines the mechanism for converting translation
@@ -41,7 +41,7 @@ return [
      */
 
     'smart_punctuation' => [
-        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+        'enabled' => (bool)env('LOCALIZATION_SMART_ENABLED', false),
 
         'common' => [
             'double_quote_opener' => '“',
