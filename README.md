@@ -6,8 +6,6 @@
 [![Total Downloads][badge_downloads]][link_packagist]
 [![License][badge_license]][link_license]
 
-> The Laravel-Lang config package
-
 ## Communication
 
 We also have official [chats](https://t.me/addlist/l0XGtvEIBiljMTMy) in Telegram.
