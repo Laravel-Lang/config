@@ -3,7 +3,6 @@
     "description": "The Laravel-Lang config package",
     "license": "MIT",
     "type": "library",
-    "version": "1.0.0",
     "keywords": [
         "laravel-lang",
         "lang",
