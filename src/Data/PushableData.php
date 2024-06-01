@@ -8,8 +8,7 @@ class PushableData
 {
     public function __construct(
         public array $items
-    ) {
-    }
+    ) {}
 
     public function get(): array
     {
@@ -23,7 +22,7 @@ class PushableData
         return $this;
     }
 
-    public function set(int | string $key, mixed $value): static
+    public function set(int|string $key, mixed $value): static
     {
         $this->items[$key] = $value;
 
