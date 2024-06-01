@@ -36,7 +36,7 @@ class Config
     protected static function smartPunctuation(): SmartPunctuationData
     {
         return new SmartPunctuationData(
-            enabled: static::value(Name::Shared, 'smart_punctuation.enabled'),
+            enabled: static::value(Name::Shared, 'smart_punctuation.enable'),
             common: static::value(Name::Shared, 'smart_punctuation.common'),
 
             locales: static::value(

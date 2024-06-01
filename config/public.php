@@ -19,7 +19,7 @@ return [
      * By default, `false`.
      */
 
-    'inline' => (bool) env('LOCALIZATION_INLINE', false),
+    'inline' => (bool) env('LOCALIZATION_INLINE', env('LANG_PUBLISHER_INLINE')),
 
     /*
      * Do arrays need to be aligned by keys before processing arrays?
@@ -27,7 +27,7 @@ return [
      * By default, true
      */
 
-    'align' => (bool) env('LOCALIZATION_ALIGN', true),
+    'align' => (bool) env('LOCALIZATION_ALIGN', env('LANG_PUBLISHER_ALIGN', true)),
 
     /*
      * The language codes chosen for the files in this repository may not
@@ -53,7 +53,7 @@ return [
      */
 
     'smart_punctuation' => [
-        'enabled' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
 
         'common' => [
             'double_quote_opener' => '“',

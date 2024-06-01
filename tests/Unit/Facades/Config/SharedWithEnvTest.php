@@ -35,7 +35,7 @@ test('smart punctuation: enabled', function () {
     expect(Config::shared()->punctuation->enabled)
         ->toBeBool()
         ->toBeTrue()
-        ->toBe(config('localization.smart_punctuation.enabled'));
+        ->toBe(config('localization.smart_punctuation.enable'));
 });
 
 test('smart punctuation: common', function () {
