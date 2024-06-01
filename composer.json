@@ -1,6 +1,6 @@
 {
     "name": "laravel-lang/config",
-    "description": "Config repository for Laravel-Lang packages",
+    "description": "The Laravel-Lang config package",
     "license": "MIT",
     "type": "library",
     "version": "1.0.0",
