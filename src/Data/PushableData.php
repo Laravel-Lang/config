@@ -14,8 +14,7 @@ class PushableData
     public function __construct(
         protected readonly string $key,
         protected readonly ?string $default = null
-    ) {
-    }
+    ) {}
 
     public function all(): array
     {
@@ -29,7 +28,7 @@ class PushableData
         return $this;
     }
 
-    public function set(int | string | BackedEnum $key, mixed $value): mixed
+    public function set(BackedEnum|int|string $key, mixed $value): mixed
     {
         config()->set($key = $this->key . '.' . $this->resolveKey($key), $value);
 

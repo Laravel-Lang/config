@@ -59,7 +59,7 @@ class Config
 
     protected static function repository(string $key, ?string $default = null): mixed
     {
-        if (!is_null($default)) {
+        if (! is_null($default)) {
             $default = static::repository($default);
         }
 
