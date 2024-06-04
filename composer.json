@@ -36,7 +36,7 @@
         "laravel-lang/locale-list": "^1.4"
     },
     "require-dev": {
-        "orchestra/testbench": "^9.1",
+        "orchestra/testbench": "^8.23 || ^9.1",
         "pestphp/pest": "^2.34"
     },
     "minimum-stability": "stable",

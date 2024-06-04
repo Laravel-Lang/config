@@ -30,8 +30,12 @@ class PushableData
 
     public function set(BackedEnum|int|string $key, mixed $value): mixed
     {
-        config()->set($key = $this->key . '.' . $this->resolveKey($key), $value);
+        $stored = config($this->key);
 
-        return $this->get($key);
+        $stored[$this->resolveKey($key)] = $value;
+
+        config()->set($this->key, $stored);
+
+        return $stored;
     }
 }
