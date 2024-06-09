@@ -92,4 +92,13 @@ return [
             ],
         ],
     ],
+
+    'routes' => [
+        'names' => [
+            'parameter' => 'locale',
+            'header'    => 'X-Localization',
+            'cookie'    => 'X-Localization',
+            'session'   => 'X-Localization',
+        ],
+    ],
 ];
