@@ -8,14 +8,6 @@ return [
     /*
      * Determines what type of files to use when updating language files.
      *
-     * `true` means inline files will be used.
-     * `false` means that default files will be used.
-     *
-     * For example, the difference between them can be seen here:
-     *
-     * The :attribute must be accepted. // default
-     * This field must be accepted.     // inline
-     *
      * By default, `false`.
      */
 
@@ -44,10 +36,6 @@ return [
     /*
      * This option determines the mechanism for converting translation
      * keys into a typographic version.
-     *
-     * For example,
-     * for `false`: "It's super-configurable... -- just like this one!"
-     * for `true`: “It’s super-configurable… – just like this one!”
      *
      * By default, false
      */
@@ -93,47 +81,31 @@ return [
         ],
     ],
 
-    // This option defines settings for working with routing.
+    /*
+     * This option defines settings for working with routing.
+     * 
+     * 
+     */
 
     'routes' => [
         // This option defines the names of the keys for application localization.
 
+        /*
+         * This option defines the settings for the key names used when working with application routing.
+         * 
+         * Default values:
+         * 
+         *   parameter - locale
+         *   header    - X-Localization
+         *   cookie    - X-Localization
+         *   session   - X-Localization
+         */
+
         'names' => [
-            /*
-             * This option specifies the name of the localization parameter used in the URL.
-             *
-             * For example:
-             *
-             *   app('router')->get('foo/{locale}', fn () => ...)
-             *
-             * By default, `locale`.
-             */
-
             'parameter' => 'locale',
-
-            /*
-             * This option specifies the name of the localization parameter used in request headers.
-             *
-             * By default, `X-Localization`.
-             */
-
-            'header' => 'X-Localization',
-
-            /*
-             * This option specifies the name of the localization parameter used in request cookies.
-             *
-             * By default, `X-Localization`.
-             */
-
-            'cookie' => 'X-Localization',
-
-            /*
-             * This option specifies the name of the localization parameter used in request session.
-             *
-             * By default, `X-Localization`.
-             */
-
-            'session' => 'X-Localization',
+            'header'    => 'X-Localization',
+            'cookie'    => 'X-Localization',
+            'session'   => 'X-Localization',
         ],
     ],
 ];
