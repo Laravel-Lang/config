@@ -93,12 +93,47 @@ return [
         ],
     ],
 
+    // This option defines settings for working with routing.
+
     'routes' => [
+        // This option defines the names of the keys for application localization.
+
         'names' => [
+            /*
+             * This option specifies the name of the localization parameter used in the URL.
+             *
+             * For example:
+             *
+             *   app('router')->get('foo/{locale}', fn () => ...)
+             *
+             * By default, `locale`.
+             */
+
             'parameter' => 'locale',
-            'header'    => 'X-Localization',
-            'cookie'    => 'X-Localization',
-            'session'   => 'X-Localization',
+
+            /*
+             * This option specifies the name of the localization parameter used in request headers.
+             *
+             * By default, `X-Localization`.
+             */
+
+            'header' => 'X-Localization',
+
+            /*
+             * This option specifies the name of the localization parameter used in request cookies.
+             *
+             * By default, `X-Localization`.
+             */
+
+            'cookie' => 'X-Localization',
+
+            /*
+             * This option specifies the name of the localization parameter used in request session.
+             *
+             * By default, `X-Localization`.
+             */
+
+            'session' => 'X-Localization',
         ],
     ],
 ];
