@@ -61,3 +61,21 @@ test('smart punctuation: get default locale', function () {
         ->toBeArray()
         ->toBe(config('localization.smart_punctuation.common'));
 });
+
+test('routes: names', function () {
+    expect(Config::shared()->routes->names->parameter)
+        ->toBeString()
+        ->toBe(config('localization.routes.names.parameter'));
+
+    expect(Config::shared()->routes->names->header)
+        ->toBeString()
+        ->toBe(config('localization.routes.names.header'));
+
+    expect(Config::shared()->routes->names->cookie)
+        ->toBeString()
+        ->toBe(config('localization.routes.names.cookie'));
+
+    expect(Config::shared()->routes->names->session)
+        ->toBeString()
+        ->toBe(config('localization.routes.names.session'));
+});

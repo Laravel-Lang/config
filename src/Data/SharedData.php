@@ -11,5 +11,6 @@ class SharedData
         public bool $align,
         public NonPushableData $aliases,
         public SmartPunctuationData $punctuation,
+        public RoutesData $routes,
     ) {}
 }

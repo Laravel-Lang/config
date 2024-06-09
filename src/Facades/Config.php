@@ -8,6 +8,8 @@ use Illuminate\Config\Repository;
 use LaravelLang\Config\Data\HiddenData;
 use LaravelLang\Config\Data\NonPushableData;
 use LaravelLang\Config\Data\PushableData;
+use LaravelLang\Config\Data\RouteNameData;
+use LaravelLang\Config\Data\RoutesData;
 use LaravelLang\Config\Data\SharedData;
 use LaravelLang\Config\Data\SmartPunctuationData;
 use LaravelLang\Config\Enums\Name;
@@ -17,19 +19,20 @@ class Config
     public static function shared(): SharedData
     {
         return new SharedData(
-            inline: (bool) static::value(Name::Shared, 'inline'),
-            align: (bool) static::value(Name::Shared, 'align'),
-            aliases: static::value(Name::Shared, 'aliases', object: NonPushableData::class),
-            punctuation: static::smartPunctuation()
+            inline     : (bool) static::value(Name::Shared, 'inline'),
+            align      : (bool) static::value(Name::Shared, 'align'),
+            aliases    : static::value(Name::Shared, 'aliases', object: NonPushableData::class),
+            punctuation: static::smartPunctuation(),
+            routes     : static::routes(),
         );
     }
 
     public static function hidden(): HiddenData
     {
         return new HiddenData(
-            plugins: static::value(Name::Hidden, 'plugins', object: PushableData::class),
+            plugins : static::value(Name::Hidden, 'plugins', object: PushableData::class),
             packages: static::value(Name::Hidden, 'packages', object: PushableData::class),
-            map: static::value(Name::Hidden, 'map', object: NonPushableData::class),
+            map     : static::value(Name::Hidden, 'map', object: NonPushableData::class),
         );
     }
 
@@ -37,7 +40,7 @@ class Config
     {
         return new SmartPunctuationData(
             enabled: static::value(Name::Shared, 'smart_punctuation.enable'),
-            common: static::value(Name::Shared, 'smart_punctuation.common'),
+            common : static::value(Name::Shared, 'smart_punctuation.common'),
 
             locales: static::value(
                 Name::Shared,
@@ -45,6 +48,18 @@ class Config
                 'smart_punctuation.common',
                 NonPushableData::class
             ),
+        );
+    }
+
+    protected static function routes(): RoutesData
+    {
+        return new RoutesData(
+            names: new RouteNameData(
+                parameter: static::value(Name::Shared, 'routes.names.parameter'),
+                header   : static::value(Name::Shared, 'routes.names.header'),
+                cookie   : static::value(Name::Shared, 'routes.names.cookie'),
+                session  : static::value(Name::Shared, 'routes.names.session'),
+            )
         );
     }
 
