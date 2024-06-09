@@ -81,11 +81,7 @@ return [
         ],
     ],
 
-    // This option defines settings for working with routing.
-
     'routes' => [
-        // This option defines the names of the keys for application localization.
-
         /*
          * This option defines the settings for the key names used when working with application routing.
          *
