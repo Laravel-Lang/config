@@ -7,6 +7,8 @@ namespace LaravelLang\Config\Data;
 use BackedEnum;
 use LaravelLang\Config\Concerns\HasValues;
 
+use function config;
+
 class PushableData
 {
     use HasValues;
