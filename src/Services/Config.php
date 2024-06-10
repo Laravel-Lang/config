@@ -14,10 +14,12 @@ use LaravelLang\Config\Data\SharedData;
 use LaravelLang\Config\Data\SmartPunctuationData;
 use LaravelLang\Config\Enums\Name;
 
+use function is_null;
+
 class Config
 {
     public function __construct(
-        protected Repository $appConfig
+        protected Repository $config
     ) {}
 
     public function shared(): SharedData
@@ -89,6 +91,6 @@ class Config
             $default = $this->repository($default);
         }
 
-        return $this->appConfig->get($key, $default);
+        return $this->config->get($key, $default);
     }
 }

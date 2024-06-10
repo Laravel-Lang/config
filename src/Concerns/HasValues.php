@@ -6,6 +6,8 @@ namespace LaravelLang\Config\Concerns;
 
 use BackedEnum;
 
+use function config;
+
 trait HasValues
 {
     use HasKey;
@@ -27,9 +29,9 @@ trait HasValues
     protected function value(string $key, ?string $default = null): mixed
     {
         if ($default) {
-            return config()->get($key) ?: config()->get($default);
+            return config($key) ?: config($default);
         }
 
-        return config()->get($key);
+        return config($key);
     }
 }
