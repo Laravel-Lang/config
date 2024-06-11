@@ -8,6 +8,8 @@ return [
     /*
      * Determines what type of files to use when updating language files.
      *
+     * @see https://laravel-lang.com/configuration.html#inline
+     *
      * By default, `false`.
      */
 
@@ -15,6 +17,8 @@ return [
 
     /*
      * Do arrays need to be aligned by keys before processing arrays?
+     *
+     * @see https://laravel-lang.com/configuration.html#alignment
      *
      * By default, true
      */
@@ -26,6 +30,8 @@ return [
      * match the preferences for your project.
      *
      * Specify here mappings of localizations with your project.
+     *
+     * @see https://laravel-lang.com/configuration.html#aliases
      */
 
     'aliases' => [
@@ -36,6 +42,8 @@ return [
     /*
      * This option determines the mechanism for converting translation
      * keys into a typographic version.
+     *
+     * @see https://laravel-lang.com/configuration.html#smart_punctuation
      *
      * By default, false
      */
@@ -81,6 +89,12 @@ return [
         ],
     ],
 
+    /*
+     * This option defines the application's route settings.
+     *
+     * @see https://laravel-lang.com/configuration.html#routes
+     */
+
     'routes' => [
         /*
          * This option defines the settings for the key names used when working with application routing.
@@ -99,5 +113,21 @@ return [
             'cookie'    => 'X-Localization',
             'session'   => 'X-Localization',
         ],
+    ],
+
+    /*
+     * This option defines settings for working with model translations.
+     *
+     * @see https://laravel-lang.com/configuration.html#models
+     */
+
+    'models' => [
+        'connection' => null,
+
+        'table' => 'translations',
+
+        'flags' => JSON_UNESCAPED_UNICODE ^ JSON_UNESCAPED_SLASHES,
+
+        'helpers' => base_path('vendor/_laravel_lang'),
     ],
 ];

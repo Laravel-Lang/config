@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Enums\Name;
 use LaravelLang\Config\Facades\Config;
 use LaravelLang\LocaleList\Locale;
 
@@ -78,4 +79,16 @@ test('routes: names', function () {
     expect(Config::shared()->routes->names->session)
         ->toBeString()
         ->toBe(config('localization.routes.names.session'));
+});
+
+test('models', function () {
+    config()->set(Name::Shared() . '.models.connection', 'foo');
+    config()->set(Name::Shared() . '.models.table', 'bar');
+    config()->set(Name::Shared() . '.models.flags', JSON_UNESCAPED_SLASHES);
+    config()->set(Name::Shared() . '.models.helpers', realpath(dirname(__DIR__)));
+
+    expect(Config::shared()->models->connection)->toBe('foo');
+    expect(Config::shared()->models->table)->toBe('bar');
+    expect(Config::shared()->models->flags)->toBe(JSON_UNESCAPED_SLASHES);
+    expect(Config::shared()->models->helpers)->toBe(realpath(dirname(__DIR__)));
 });

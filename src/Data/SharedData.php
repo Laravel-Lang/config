@@ -12,5 +12,6 @@ class SharedData
         public NonPushableData $aliases,
         public SmartPunctuationData $punctuation,
         public RoutesData $routes,
+        public ModelsData $models,
     ) {}
 }
