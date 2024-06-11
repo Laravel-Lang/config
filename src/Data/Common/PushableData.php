@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Config\Data;
+namespace LaravelLang\Config\Data\Common;
 
 use BackedEnum;
 use LaravelLang\Config\Concerns\HasValues;

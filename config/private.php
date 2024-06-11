@@ -9,6 +9,10 @@ return [
     'plugins'  => [],
     'packages' => [],
 
+    'models' => [
+        'directory' => base_path('app'),
+    ],
+
     'map' => [
         Locale::Afrikaans->value => [
             'type'     => 'Latn',

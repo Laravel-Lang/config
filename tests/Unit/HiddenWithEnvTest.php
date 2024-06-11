@@ -42,6 +42,14 @@ test('packages', function () {
         ->toBe(config('localization-private.packages'));
 });
 
+test('models', function () {
+    config(['localization-private.models.directory' => __DIR__]);
+
+    expect(Config::hidden()->models->directory)
+        ->toBe(__DIR__)
+        ->toBe(config('localization-private.models.directory'));
+});
+
 test('map', function () {
     expect(Config::hidden()->map->all())
         ->toBeArray()

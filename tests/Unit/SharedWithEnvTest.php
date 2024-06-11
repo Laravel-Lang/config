@@ -87,8 +87,23 @@ test('models', function () {
     config()->set(Name::Shared() . '.models.flags', JSON_UNESCAPED_SLASHES);
     config()->set(Name::Shared() . '.models.helpers', realpath(dirname(__DIR__)));
 
-    expect(Config::shared()->models->connection)->toBe('foo');
-    expect(Config::shared()->models->table)->toBe('bar');
-    expect(Config::shared()->models->flags)->toBe(JSON_UNESCAPED_SLASHES);
-    expect(Config::shared()->models->helpers)->toBe(realpath(dirname(__DIR__)));
+    expect(Config::shared()->models->connection)
+        ->toBeString()
+        ->toBe('foo')
+        ->toBe(config('localization.models.connection'));
+
+    expect(Config::shared()->models->table)
+        ->toBeString()
+        ->toBe('bar')
+        ->toBe(config('localization.models.table'));
+
+    expect(Config::shared()->models->flags)
+        ->toBeInt()
+        ->toBe(JSON_UNESCAPED_SLASHES)
+        ->toBe(config('localization.models.flags'));
+
+    expect(Config::shared()->models->helpers)
+        ->toBeString()
+        ->toBe(realpath(dirname(__DIR__)))
+        ->toBe(config('localization.models.helpers'));
 });

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Config\Data;
+namespace LaravelLang\Config\Data\Shared;
 
 class ModelsData
 {
