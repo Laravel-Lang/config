@@ -6,6 +6,7 @@ namespace LaravelLang\Config\Services;
 
 use Illuminate\Config\Repository;
 use LaravelLang\Config\Data\HiddenData;
+use LaravelLang\Config\Data\ModelsData;
 use LaravelLang\Config\Data\NonPushableData;
 use LaravelLang\Config\Data\PushableData;
 use LaravelLang\Config\Data\RouteNameData;
@@ -30,6 +31,7 @@ class Config
             aliases    : $this->value(Name::Shared, 'aliases', object: NonPushableData::class),
             punctuation: $this->smartPunctuation(),
             routes     : $this->routes(),
+            models     : $this->models(),
         );
     }
 
@@ -66,6 +68,16 @@ class Config
                 cookie   : $this->value(Name::Shared, 'routes.names.cookie'),
                 session  : $this->value(Name::Shared, 'routes.names.session'),
             )
+        );
+    }
+
+    protected function models(): ModelsData
+    {
+        return new ModelsData(
+            connection: $this->value(Name::Shared, 'models.connection'),
+            table     : $this->value(Name::Shared, 'models.table'),
+            flags     : $this->value(Name::Shared, 'models.flags'),
+            helpers   : $this->value(Name::Shared, 'models.helpers'),
         );
     }
 
