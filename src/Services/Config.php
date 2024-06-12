@@ -49,7 +49,7 @@ class Config
     protected function hiddenModels(): HiddenModelsData
     {
         return new HiddenModelsData(
-            directory: $this->value(Name::Hidden, 'models.directory'),
+            directory: $this->value(Name::Hidden, 'models.directory') ?? base_path('app'),
         );
     }
 
