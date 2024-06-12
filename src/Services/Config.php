@@ -15,6 +15,7 @@ use LaravelLang\Config\Data\Shared\RoutesData;
 use LaravelLang\Config\Data\Shared\SmartPunctuationData;
 use LaravelLang\Config\Data\SharedData;
 use LaravelLang\Config\Enums\Name;
+use LaravelLang\Config\Helpers\Path;
 
 use function is_null;
 
@@ -27,8 +28,8 @@ class Config
     public function shared(): SharedData
     {
         return new SharedData(
-            inline     : (bool) $this->value(Name::Shared, 'inline'),
-            align      : (bool) $this->value(Name::Shared, 'align'),
+            inline     : (bool) $this->value(Name::Shared, 'inline', fallback: false),
+            align      : (bool) $this->value(Name::Shared, 'align', fallback: true),
             aliases    : $this->value(Name::Shared, 'aliases', object: NonPushableData::class),
             punctuation: $this->smartPunctuation(),
             routes     : $this->routes(),
@@ -49,15 +50,15 @@ class Config
     protected function hiddenModels(): HiddenModelsData
     {
         return new HiddenModelsData(
-            directory: $this->value(Name::Hidden, 'models.directory') ?? base_path('app'),
+            directory: $this->value(Name::Hidden, 'models.directory', fallback: Path::app()),
         );
     }
 
     protected function smartPunctuation(): SmartPunctuationData
     {
         return new SmartPunctuationData(
-            enabled: $this->value(Name::Shared, 'smart_punctuation.enable'),
-            common : $this->value(Name::Shared, 'smart_punctuation.common'),
+            enabled: $this->value(Name::Shared, 'smart_punctuation.enable', fallback: false),
+            common : $this->value(Name::Shared, 'smart_punctuation.common', fallback: []),
 
             locales: $this->value(
                 Name::Shared,
@@ -72,10 +73,10 @@ class Config
     {
         return new RoutesData(
             names: new RouteNameData(
-                parameter: $this->value(Name::Shared, 'routes.names.parameter'),
-                header   : $this->value(Name::Shared, 'routes.names.header'),
-                cookie   : $this->value(Name::Shared, 'routes.names.cookie'),
-                session  : $this->value(Name::Shared, 'routes.names.session'),
+                parameter: $this->value(Name::Shared, 'routes.names.parameter', fallback: 'locale'),
+                header   : $this->value(Name::Shared, 'routes.names.header', fallback: 'X-Localization'),
+                cookie   : $this->value(Name::Shared, 'routes.names.cookie', fallback: 'X-Localization'),
+                session  : $this->value(Name::Shared, 'routes.names.session', fallback: 'X-Localization'),
             )
         );
     }
@@ -84,19 +85,24 @@ class Config
     {
         return new ModelsData(
             connection: $this->value(Name::Shared, 'models.connection'),
-            table     : $this->value(Name::Shared, 'models.table'),
-            flags     : $this->value(Name::Shared, 'models.flags'),
-            helpers   : $this->value(Name::Shared, 'models.helpers'),
+            table     : $this->value(Name::Shared, 'models.table', fallback: 'translations'),
+            flags     : $this->value(Name::Shared, 'models.flags', fallback: 0),
+            helpers   : $this->value(Name::Shared, 'models.helpers', fallback: Path::helpers()),
         );
     }
 
-    protected function value(Name $name, string $key, ?string $default = null, ?string $object = null): mixed
-    {
+    protected function value(
+        Name $name,
+        string $key,
+        ?string $default = null,
+        ?string $object = null,
+        mixed $fallback = null
+    ): mixed {
         $main    = $name->value . '.' . $key;
         $default = $default ? $name->value . '.' . $default : null;
 
         if (is_null($object)) {
-            return $this->repository($main, $this->repository($default));
+            return $this->repository($main, $this->repository($default)) ?? $fallback;
         }
 
         return new $object($main, $default);

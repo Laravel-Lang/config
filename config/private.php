@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Helpers\Path;
 use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale;
 
@@ -10,7 +11,7 @@ return [
     'packages' => [],
 
     'models' => [
-        'directory' => base_path('app'),
+        'directory' => Path::app(),
     ],
 
     'map' => [
