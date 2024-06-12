@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelLang\Config\Services;
 
 use Illuminate\Config\Repository;
+use LaravelLang\Config\Constants\RouteName;
 use LaravelLang\Config\Data\Common\NonPushableData;
 use LaravelLang\Config\Data\Common\PushableData;
 use LaravelLang\Config\Data\Hidden\ModelsData as HiddenModelsData;
@@ -74,9 +75,9 @@ class Config
         return new RoutesData(
             names: new RouteNameData(
                 parameter: $this->value(Name::Shared, 'routes.names.parameter', fallback: 'locale'),
-                header   : $this->value(Name::Shared, 'routes.names.header', fallback: 'X-Localization'),
-                cookie   : $this->value(Name::Shared, 'routes.names.cookie', fallback: 'X-Localization'),
-                session  : $this->value(Name::Shared, 'routes.names.session', fallback: 'X-Localization'),
+                header   : $this->value(Name::Shared, 'routes.names.header', fallback: RouteName::Header),
+                cookie   : $this->value(Name::Shared, 'routes.names.cookie', fallback: RouteName::Cookie),
+                session  : $this->value(Name::Shared, 'routes.names.session', fallback: RouteName::Session),
             )
         );
     }
