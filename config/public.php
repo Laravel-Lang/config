@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Constants\RouteName;
 use LaravelLang\LocaleList\Locale;
 
 return [
@@ -108,10 +109,10 @@ return [
          */
 
         'names' => [
-            'parameter' => 'locale',
-            'header'    => 'X-Localization',
-            'cookie'    => 'X-Localization',
-            'session'   => 'X-Localization',
+            'parameter' => RouteName::Parameter,
+            'header'    => RouteName::Header,
+            'cookie'    => RouteName::Cookie,
+            'session'   => RouteName::Session,
         ],
     ],
 
