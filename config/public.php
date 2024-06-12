@@ -129,6 +129,6 @@ return [
 
         'flags' => JSON_UNESCAPED_UNICODE ^ JSON_UNESCAPED_SLASHES,
 
-        'helpers' => base_path('vendor/_laravel_lang'),
+        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
     ],
 ];
