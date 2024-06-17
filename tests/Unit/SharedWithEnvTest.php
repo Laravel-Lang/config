@@ -94,8 +94,14 @@ test('routes: redirect default', function () {
 });
 
 test('models', function () {
+    config()->set(Name::Shared() . '.models.suffix', 'qwerty');
     config()->set(Name::Shared() . '.models.flags', JSON_UNESCAPED_SLASHES);
     config()->set(Name::Shared() . '.models.helpers', realpath(dirname(__DIR__)));
+
+    expect(Config::shared()->models->suffix)
+        ->toBeString()
+        ->toBe('qwerty')
+        ->toBe(config('localization.models.suffix'));
 
     expect(Config::shared()->models->flags)
         ->toBeInt()
