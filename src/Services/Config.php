@@ -87,10 +87,8 @@ class Config
     protected function models(): ModelsData
     {
         return new ModelsData(
-            connection: $this->value(Name::Shared, 'models.connection'),
-            table     : $this->value(Name::Shared, 'models.table', fallback: 'translations'),
-            flags     : $this->value(Name::Shared, 'models.flags', fallback: 0),
-            helpers   : $this->value(Name::Shared, 'models.helpers', fallback: Path::helpers()),
+            flags  : $this->value(Name::Shared, 'models.flags', fallback: 0),
+            helpers: $this->value(Name::Shared, 'models.helpers', fallback: Path::helpers()),
         );
     }
 

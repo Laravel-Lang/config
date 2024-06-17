@@ -139,10 +139,6 @@ return [
      */
 
     'models' => [
-        'connection' => null,
-
-        'table' => 'translations',
-
         'flags' => JSON_UNESCAPED_UNICODE ^ JSON_UNESCAPED_SLASHES,
 
         'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
