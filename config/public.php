@@ -151,8 +151,6 @@ return [
 
         'suffix' => 'Translation',
 
-        'flags' => JSON_UNESCAPED_UNICODE ^ JSON_UNESCAPED_SLASHES,
-
         /*
          * This option specifies a folder to store helper files for the IDE.
          *
