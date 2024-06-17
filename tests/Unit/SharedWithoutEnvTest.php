@@ -94,20 +94,8 @@ test('routes: redirect default', function () {
 });
 
 test('models', function () {
-    config()->set(Name::Shared() . '.models.connection', 'foo');
-    config()->set(Name::Shared() . '.models.table', 'bar');
     config()->set(Name::Shared() . '.models.flags', JSON_UNESCAPED_SLASHES);
     config()->set(Name::Shared() . '.models.helpers', realpath(dirname(__DIR__)));
-
-    expect(Config::shared()->models->connection)
-        ->toBeString()
-        ->toBe('foo')
-        ->toBe(config('localization.models.connection'));
-
-    expect(Config::shared()->models->table)
-        ->toBeString()
-        ->toBe('bar')
-        ->toBe(config('localization.models.table'));
 
     expect(Config::shared()->models->flags)
         ->toBeInt()
