@@ -139,24 +139,21 @@ return [
      */
 
     'models' => [
-
         /*
          * This option specifies a suffix for models containing translations.
-         * 
+         *
          * For example,
          *   main model is `App\Models\Page`
          *   translation model is `App\Models\PageTranslation`
-         * 
-         * By default, `Translation` 
+         *
+         * By default, `Translation`
          */
 
         'suffix' => 'Translation',
 
-        'flags' => JSON_UNESCAPED_UNICODE ^ JSON_UNESCAPED_SLASHES,
-
         /*
          * This option specifies a folder to store helper files for the IDE.
-         * 
+         *
          * By default, `vendor/_laravel_lang`
          */
 

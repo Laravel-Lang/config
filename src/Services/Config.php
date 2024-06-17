@@ -88,7 +88,6 @@ class Config
     {
         return new ModelsData(
             suffix : $this->value(Name::Shared, 'models.suffix', fallback: 'Translation'),
-            flags  : $this->value(Name::Shared, 'models.flags', fallback: 0),
             helpers: $this->value(Name::Shared, 'models.helpers', fallback: Path::helpers()),
         );
     }
