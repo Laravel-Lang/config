@@ -81,6 +81,18 @@ test('routes: names', function () {
         ->toBe(config('localization.routes.names.session'));
 });
 
+test('routes: name prefix', function () {
+    expect(Config::shared()->routes->namePrefix)
+        ->toBeString()
+        ->toBe(config('localization.routes.name_prefix'));
+});
+
+test('routes: redirect default', function () {
+    expect(Config::shared()->routes->redirect)
+        ->toBeBool()
+        ->toBe(config('localization.routes.redirect_default'));
+});
+
 test('models', function () {
     config()->set(Name::Shared() . '.models.connection', 'foo');
     config()->set(Name::Shared() . '.models.table', 'bar');

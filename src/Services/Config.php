@@ -73,12 +73,14 @@ class Config
     protected function routes(): RoutesData
     {
         return new RoutesData(
-            names: new RouteNameData(
+            names     : new RouteNameData(
                 parameter: $this->value(Name::Shared, 'routes.names.parameter', fallback: 'locale'),
                 header   : $this->value(Name::Shared, 'routes.names.header', fallback: RouteName::Header),
                 cookie   : $this->value(Name::Shared, 'routes.names.cookie', fallback: RouteName::Cookie),
                 session  : $this->value(Name::Shared, 'routes.names.session', fallback: RouteName::Session),
-            )
+            ),
+            namePrefix: $this->value(Name::Shared, 'routes.name_prefix', fallback: 'localized.'),
+            redirect  : $this->value(Name::Shared, 'routes.redirect_default', fallback: false),
         );
     }
 

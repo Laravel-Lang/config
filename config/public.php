@@ -114,6 +114,22 @@ return [
             'cookie'    => RouteName::Cookie,
             'session'   => RouteName::Session,
         ],
+
+        /*
+         * This option specifies the prefix of route group names.
+         *
+         * By default, `localized.`
+         */
+
+        'name_prefix' => env('LOCALIZATION_NAME_PREFIX', 'localized.'),
+
+        /*
+         * This option specifies the request redirection option when trying to open the default localization.
+         *
+         * Applies when using the `LaravelLang\Routes\Facades\LocalizationRoute` facade.
+         */
+
+        'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
     ],
 
     /*
