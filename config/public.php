@@ -106,6 +106,7 @@ return [
          *   header    - X-Localization
          *   cookie    - X-Localization
          *   session   - X-Localization
+         *   column    - column
          */
 
         'names' => [
@@ -113,6 +114,7 @@ return [
             'header'    => RouteName::Header,
             'cookie'    => RouteName::Cookie,
             'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
         ],
 
         /*

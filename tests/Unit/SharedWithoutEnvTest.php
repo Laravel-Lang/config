@@ -79,6 +79,10 @@ test('routes: names', function () {
     expect(Config::shared()->routes->names->session)
         ->toBeString()
         ->toBe(config('localization.routes.names.session'));
+
+    expect(Config::shared()->routes->names->column)
+        ->toBeString()
+        ->toBe(config('localization.routes.names.column'));
 });
 
 test('routes: name prefix', function () {
