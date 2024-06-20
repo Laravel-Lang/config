@@ -113,6 +113,7 @@ return [
             'header'    => RouteName::Header,
             'cookie'    => RouteName::Cookie,
             'session'   => RouteName::Session,
+            'column'    => RouteName::Column,
         ],
 
         /*

@@ -78,6 +78,7 @@ class Config
                 header   : $this->value(Name::Shared, 'routes.names.header', fallback: RouteName::Header),
                 cookie   : $this->value(Name::Shared, 'routes.names.cookie', fallback: RouteName::Cookie),
                 session  : $this->value(Name::Shared, 'routes.names.session', fallback: RouteName::Session),
+                column   : $this->value(Name::Shared, 'routes.names.column', fallback: RouteName::Column),
             ),
             namePrefix: $this->value(Name::Shared, 'routes.name_prefix', fallback: 'localized.'),
             redirect  : $this->value(Name::Shared, 'routes.redirect_default', fallback: false),
