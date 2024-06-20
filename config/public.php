@@ -106,6 +106,7 @@ return [
          *   header    - X-Localization
          *   cookie    - X-Localization
          *   session   - X-Localization
+         *   column    - column
          */
 
         'names' => [
