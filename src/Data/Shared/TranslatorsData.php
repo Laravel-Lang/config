@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Data\Shared;
 
+/**
+ * @property array<TranslatorData> $all
+ * @property array<TranslatorData> $enabled
+ */
 class TranslatorsData
 {
     public function __construct(
-        /**
-         * @var array<TranslatorData> $all
-         */
         public array $all,
+        public array $enabled,
     ) {}
 }

@@ -113,7 +113,7 @@ test('models', function () {
         ->toBe(config('localization.models.helpers'));
 });
 
-test('translators', function () {
+test('translators: all', function () {
     expect(Config::shared()->translators->all['google'])
         ->toBeInstanceOf(TranslatorData::class)
         ->enabled->toBeTrue()
@@ -136,4 +136,15 @@ test('translators', function () {
             'key'    => null,
             'folder' => null,
         ]);
+});
+
+test('translators: enabled', function () {
+    expect(Config::shared()->translators->enabled)
+        ->toHaveKey('google');
+
+    expect(Config::shared()->translators->enabled)
+        ->not->toHaveKey('deepl');
+
+    expect(Config::shared()->translators->enabled)
+        ->not->toHaveKey('yandex');
 });

@@ -98,11 +98,18 @@ class Config
 
     protected function translators(): TranslatorsData
     {
-        return new TranslatorsData(array_map(fn (array $item) => new TranslatorData(
+        $items = $this->getTranslators();
+
+        return new TranslatorsData($items, array_filter($items, fn (TranslatorData $item) => $item->enabled));
+    }
+
+    protected function getTranslators(): array
+    {
+        return array_map(fn (array $item) => new TranslatorData(
             enabled    : $item['enabled'],
             translator : $item['translator'],
             credentials: $item['credentials'] ?? []
-        ), $this->value(Name::Shared, 'translators')));
+        ), $this->value(Name::Shared, 'translators'));
     }
 
     protected function value(
