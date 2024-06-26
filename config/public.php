@@ -166,7 +166,7 @@ return [
      * This option contains a list of translators that the Laravel Lang Translator project works with.
      *
      * Google Translate is enabled by default.
-     * 
+     *
      * @see https://laravel-lang.com/configuration.html#translators
      */
 
