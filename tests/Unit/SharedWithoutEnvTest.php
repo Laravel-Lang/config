@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Data\Shared\TranslatorData;
 use LaravelLang\Config\Enums\Name;
 use LaravelLang\Config\Facades\Config;
 use LaravelLang\LocaleList\Locale;
@@ -110,4 +111,29 @@ test('models', function () {
         ->toBeString()
         ->toBe(realpath(dirname(__DIR__)))
         ->toBe(config('localization.models.helpers'));
+});
+
+test('translators', function () {
+    expect(Config::shared()->translators->all['google'])
+        ->toBeInstanceOf(TranslatorData::class)
+        ->enabled->toBeTrue()
+        ->translator->toBe('\LaravelLang\Translator\Integrations\Google')
+        ->credentials->toBeEmpty();
+
+    expect(Config::shared()->translators->all['deepl'])
+        ->toBeInstanceOf(TranslatorData::class)
+        ->enabled->toBeFalse()
+        ->translator->toBe('\LaravelLang\Translator\Integrations\Deepl')
+        ->credentials->toBe([
+            'key' => null,
+        ]);
+
+    expect(Config::shared()->translators->all['yandex'])
+        ->toBeInstanceOf(TranslatorData::class)
+        ->enabled->toBeFalse()
+        ->translator->toBe('\LaravelLang\Translator\Integrations\Yandex')
+        ->credentials->toBe([
+            'key'    => null,
+            'folder' => null,
+        ]);
 });

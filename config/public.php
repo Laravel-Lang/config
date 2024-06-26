@@ -161,4 +161,41 @@ return [
 
         'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
     ],
+
+    /*
+     * This option contains a list of translators that the Laravel Lang Translator project works with.
+     *
+     * Google Translate is enabled by default.
+     * 
+     * @see https://laravel-lang.com/configuration.html#translators
+     */
+
+    'translators' => [
+        'google' => [
+            'translator' => '\LaravelLang\Translator\Integrations\Google',
+
+            'enabled' => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+        ],
+
+        'deepl' => [
+            'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+
+            'enabled' => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+
+            'credentials' => [
+                'key' => env('TRANSLATION_DEEPL_KEY'),
+            ],
+        ],
+
+        'yandex' => [
+            'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+            'enabled' => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+
+            'credentials' => [
+                'key'    => env('TRANSLATION_YANDEX_KEY'),
+                'folder' => env('TRANSLATION_FOLDER_ID'),
+            ],
+        ],
+    ],
 ];

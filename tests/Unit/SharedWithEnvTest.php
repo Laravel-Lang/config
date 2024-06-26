@@ -2,14 +2,24 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Data\Shared\TranslatorData;
 use LaravelLang\Config\Enums\Name;
 use LaravelLang\Config\Facades\Config;
 use LaravelLang\LocaleList\Locale;
 
-beforeAll(function () {
+beforeEach(function () {
     putenv('LOCALIZATION_INLINE=true');
     putenv('LOCALIZATION_ALIGN=false');
     putenv('LOCALIZATION_SMART_ENABLED=true');
+
+    config()->set(Name::Shared() . '.translators.google.enabled', false);
+
+    config()->set(Name::Shared() . '.translators.deepl.enabled', true);
+    config()->set(Name::Shared() . '.translators.deepl.credentials.key', 'qwerty123');
+
+    config()->set(Name::Shared() . '.translators.yandex.enabled', true);
+    config()->set(Name::Shared() . '.translators.yandex.credentials.key', 'qwerty456');
+    config()->set(Name::Shared() . '.translators.yandex.credentials.folder', '123');
 });
 
 test('inline', function () {
@@ -110,4 +120,29 @@ test('models', function () {
         ->toBeString()
         ->toBe(realpath(dirname(__DIR__)))
         ->toBe(config('localization.models.helpers'));
+});
+
+test('translators', function () {
+    expect(Config::shared()->translators->all['google'])
+        ->toBeInstanceOf(TranslatorData::class)
+        ->enabled->toBeFalse()
+        ->translator->toBe('\LaravelLang\Translator\Integrations\Google')
+        ->credentials->toBeEmpty();
+
+    expect(Config::shared()->translators->all['deepl'])
+        ->toBeInstanceOf(TranslatorData::class)
+        ->enabled->toBeTrue()
+        ->translator->toBe('\LaravelLang\Translator\Integrations\Deepl')
+        ->credentials->toBe([
+            'key' => 'qwerty123',
+        ]);
+
+    expect(Config::shared()->translators->all['yandex'])
+        ->toBeInstanceOf(TranslatorData::class)
+        ->enabled->toBeTrue()
+        ->translator->toBe('\LaravelLang\Translator\Integrations\Yandex')
+        ->credentials->toBe([
+            'key'    => 'qwerty456',
+            'folder' => '123',
+        ]);
 });

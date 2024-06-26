@@ -14,6 +14,8 @@ use LaravelLang\Config\Data\Shared\ModelsData;
 use LaravelLang\Config\Data\Shared\RouteNameData;
 use LaravelLang\Config\Data\Shared\RoutesData;
 use LaravelLang\Config\Data\Shared\SmartPunctuationData;
+use LaravelLang\Config\Data\Shared\TranslatorData;
+use LaravelLang\Config\Data\Shared\TranslatorsData;
 use LaravelLang\Config\Data\SharedData;
 use LaravelLang\Config\Enums\Name;
 use LaravelLang\Config\Helpers\Path;
@@ -35,6 +37,7 @@ class Config
             punctuation: $this->smartPunctuation(),
             routes     : $this->routes(),
             models     : $this->models(),
+            translators: $this->translators(),
         );
     }
 
@@ -91,6 +94,15 @@ class Config
             suffix : $this->value(Name::Shared, 'models.suffix', fallback: 'Translation'),
             helpers: $this->value(Name::Shared, 'models.helpers', fallback: Path::helpers()),
         );
+    }
+
+    protected function translators(): TranslatorsData
+    {
+        return new TranslatorsData(array_map(fn (array $item) => new TranslatorData(
+            enabled    : $item['enabled'],
+            translator : $item['translator'],
+            credentials: $item['credentials'] ?? []
+        ), $this->value(Name::Shared, 'translators')));
     }
 
     protected function value(
