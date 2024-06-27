@@ -217,9 +217,9 @@ return [
              *
              *  Available options:
              *
-             *      `/any regex/` - any regular expression you specify
              *     `true` is a `/:(\w+)/`
              *     `false` will disable regular expression processing
+             *      `/any regex/` - any regular expression you specify
              *
              *   By default, `true`
              *
