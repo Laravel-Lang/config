@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Data\Shared\Translators\TranslatorData;
 use LaravelLang\Config\Enums\Name;
 use LaravelLang\Config\Facades\Config;
 use LaravelLang\LocaleList\Locale;
@@ -110,4 +111,54 @@ test('models', function () {
         ->toBeString()
         ->toBe(realpath(dirname(__DIR__)))
         ->toBe(config('localization.models.helpers'));
+});
+
+test('translators: all', function () {
+    expect(Config::shared()->translators->channels->all['google'])
+        ->toBeInstanceOf(TranslatorData::class)
+        ->enabled->toBeTrue()
+        ->translator->toBe('\LaravelLang\Translator\Integrations\Google')
+        ->credentials->toBeEmpty();
+
+    expect(Config::shared()->translators->channels->all['deepl'])
+        ->toBeInstanceOf(TranslatorData::class)
+        ->enabled->toBeFalse()
+        ->translator->toBe('\LaravelLang\Translator\Integrations\Deepl')
+        ->credentials->toBe([
+            'key' => null,
+        ]);
+
+    expect(Config::shared()->translators->channels->all['yandex'])
+        ->toBeInstanceOf(TranslatorData::class)
+        ->enabled->toBeFalse()
+        ->translator->toBe('\LaravelLang\Translator\Integrations\Yandex')
+        ->credentials->toBe([
+            'key'    => null,
+            'folder' => null,
+        ]);
+});
+
+test('translators: enabled', function () {
+    expect(Config::shared()->translators->channels->enabled)
+        ->toHaveKey('google');
+
+    expect(Config::shared()->translators->channels->enabled)
+        ->not->toHaveKey('deepl');
+
+    expect(Config::shared()->translators->channels->enabled)
+        ->not->toHaveKey('yandex');
+});
+
+test('translators: options', function () {
+    config()->set(Name::Shared() . '.translators.options.preserve_parameters', true);
+    expect(Config::shared()->translators->options->preserveParameters)->toBeTrue();
+
+    config()->set(Name::Shared() . '.translators.options.preserve_parameters', false);
+    expect(Config::shared()->translators->options->preserveParameters)->toBeFalse();
+
+    config()->set(Name::Shared() . '.translators.options.preserve_parameters', '/foo/');
+    expect(Config::shared()->translators->options->preserveParameters)->toBe('/foo/');
+
+    config()->set(Name::Shared() . '.translators.options.preserve_parameters', '  / foo  / ');
+    expect(Config::shared()->translators->options->preserveParameters)->toBe('  / foo  / ');
 });

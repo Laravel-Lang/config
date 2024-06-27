@@ -14,6 +14,10 @@ use LaravelLang\Config\Data\Shared\ModelsData;
 use LaravelLang\Config\Data\Shared\RouteNameData;
 use LaravelLang\Config\Data\Shared\RoutesData;
 use LaravelLang\Config\Data\Shared\SmartPunctuationData;
+use LaravelLang\Config\Data\Shared\Translators\TranslatorChannelsData;
+use LaravelLang\Config\Data\Shared\Translators\TranslatorData;
+use LaravelLang\Config\Data\Shared\Translators\TranslatorOptionsData;
+use LaravelLang\Config\Data\Shared\TranslatorsData;
 use LaravelLang\Config\Data\SharedData;
 use LaravelLang\Config\Enums\Name;
 use LaravelLang\Config\Helpers\Path;
@@ -35,6 +39,7 @@ class Config
             punctuation: $this->smartPunctuation(),
             routes     : $this->routes(),
             models     : $this->models(),
+            translators: $this->translators(),
         );
     }
 
@@ -91,6 +96,41 @@ class Config
             suffix : $this->value(Name::Shared, 'models.suffix', fallback: 'Translation'),
             helpers: $this->value(Name::Shared, 'models.helpers', fallback: Path::helpers()),
         );
+    }
+
+    protected function translators(): TranslatorsData
+    {
+        return new TranslatorsData(
+            channels: $this->translatorChannels(),
+            options : $this->translatorOptions()
+        );
+    }
+
+    protected function translatorChannels(): TranslatorChannelsData
+    {
+        $items = $this->getTranslators();
+
+        return new TranslatorChannelsData($items, array_filter($items, fn (TranslatorData $item) => $item->enabled));
+    }
+
+    protected function translatorOptions(): TranslatorOptionsData
+    {
+        return new TranslatorOptionsData(
+            preserveParameters: $this->value(
+                Name::Shared,
+                'translators.options.preserve_parameters',
+                fallback: true
+            )
+        );
+    }
+
+    protected function getTranslators(): array
+    {
+        return array_map(fn (array $item) => new TranslatorData(
+            enabled    : $item['enabled'] ?? true,
+            translator : $item['translator'],
+            credentials: $item['credentials'] ?? []
+        ), $this->value(Name::Shared, 'translators.channels'));
     }
 
     protected function value(
