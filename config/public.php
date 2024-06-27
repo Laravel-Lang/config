@@ -171,31 +171,62 @@ return [
      */
 
     'translators' => [
-        'google' => [
-            'translator' => '\LaravelLang\Translator\Integrations\Google',
+        /*
+         * List of channels used for translations.
+         *
+         * By default,
+         *
+         *     Google is enabled
+         *     Deepl  is disabled
+         *     Yandex is disabled
+         */
 
-            'enabled' => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
-        ],
+        'channels' => [
+            'google' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Google',
 
-        'deepl' => [
-            'translator' => '\LaravelLang\Translator\Integrations\Deepl',
+                'enabled' => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+            ],
 
-            'enabled' => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+            'deepl' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Deepl',
 
-            'credentials' => [
-                'key' => env('TRANSLATION_DEEPL_KEY'),
+                'enabled' => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+
+                'credentials' => [
+                    'key' => env('TRANSLATION_DEEPL_KEY'),
+                ],
+            ],
+
+            'yandex' => [
+                'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+
+                'enabled' => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+
+                'credentials' => [
+                    'key'    => env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => env('TRANSLATION_FOLDER_ID'),
+                ],
             ],
         ],
 
-        'yandex' => [
-            'translator' => '\LaravelLang\Translator\Integrations\Yandex',
+        'options' => [
+            /*
+             * Set a custom pattern for extracting replaceable keywords from the string,
+             * default to extracting words prefixed with a colon.
+             *
+             *  Available options:
+             *
+             *      `/any regex/` - any regular expression you specify
+             *     `true` is a `/:(\w+)/`
+             *     `false` will disable regular expression processing
+             *
+             *   By default, `true`
+             *
+             * @example (e.g. "Hello :name" will extract "name")
+             */
 
-            'enabled' => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
-
-            'credentials' => [
-                'key'    => env('TRANSLATION_YANDEX_KEY'),
-                'folder' => env('TRANSLATION_FOLDER_ID'),
-            ],
+            'preserve_parameters' => true,
         ],
     ],
 ];

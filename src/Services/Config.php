@@ -14,7 +14,9 @@ use LaravelLang\Config\Data\Shared\ModelsData;
 use LaravelLang\Config\Data\Shared\RouteNameData;
 use LaravelLang\Config\Data\Shared\RoutesData;
 use LaravelLang\Config\Data\Shared\SmartPunctuationData;
-use LaravelLang\Config\Data\Shared\TranslatorData;
+use LaravelLang\Config\Data\Shared\Translators\TranslatorChannelsData;
+use LaravelLang\Config\Data\Shared\Translators\TranslatorData;
+use LaravelLang\Config\Data\Shared\Translators\TranslatorOptionsData;
 use LaravelLang\Config\Data\Shared\TranslatorsData;
 use LaravelLang\Config\Data\SharedData;
 use LaravelLang\Config\Enums\Name;
@@ -98,18 +100,37 @@ class Config
 
     protected function translators(): TranslatorsData
     {
+        return new TranslatorsData(
+            channels: $this->translatorChannels(),
+            options : $this->translatorOptions()
+        );
+    }
+
+    protected function translatorChannels(): TranslatorChannelsData
+    {
         $items = $this->getTranslators();
 
-        return new TranslatorsData($items, array_filter($items, fn (TranslatorData $item) => $item->enabled));
+        return new TranslatorChannelsData($items, array_filter($items, fn (TranslatorData $item) => $item->enabled));
+    }
+
+    protected function translatorOptions(): TranslatorOptionsData
+    {
+        return new TranslatorOptionsData(
+            preserveParameters: $this->value(
+                Name::Shared,
+                'translators.options.preserve_parameters',
+                fallback: true
+            )
+        );
     }
 
     protected function getTranslators(): array
     {
         return array_map(fn (array $item) => new TranslatorData(
-            enabled    : $item['enabled'],
+            enabled    : $item['enabled'] ?? true,
             translator : $item['translator'],
             credentials: $item['credentials'] ?? []
-        ), $this->value(Name::Shared, 'translators'));
+        ), $this->value(Name::Shared, 'translators.channels'));
     }
 
     protected function value(

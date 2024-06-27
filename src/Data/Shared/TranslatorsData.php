@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Data\Shared;
 
-/**
- * @property array<TranslatorData> $all
- * @property array<TranslatorData> $enabled
- */
+use LaravelLang\Config\Data\Shared\Translators\TranslatorChannelsData;
+use LaravelLang\Config\Data\Shared\Translators\TranslatorOptionsData;
+
 class TranslatorsData
 {
     public function __construct(
-        public array $all,
-        public array $enabled,
+        public TranslatorChannelsData $channels,
+        public TranslatorOptionsData $options,
     ) {}
 }

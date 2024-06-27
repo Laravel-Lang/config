@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Config\Data\Shared;
+namespace LaravelLang\Config\Data\Shared\Translators;
 
 class TranslatorData
 {
