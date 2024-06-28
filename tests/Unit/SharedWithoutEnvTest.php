@@ -117,12 +117,14 @@ test('translators: all', function () {
     expect(Config::shared()->translators->channels->all['google'])
         ->toBeInstanceOf(TranslatorData::class)
         ->enabled->toBeTrue()
+        ->order->toBe(1)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Google')
         ->credentials->toBeEmpty();
 
     expect(Config::shared()->translators->channels->all['deepl'])
         ->toBeInstanceOf(TranslatorData::class)
         ->enabled->toBeFalse()
+        ->order->toBe(2)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Deepl')
         ->credentials->toBe([
             'key' => null,
@@ -131,6 +133,7 @@ test('translators: all', function () {
     expect(Config::shared()->translators->channels->all['yandex'])
         ->toBeInstanceOf(TranslatorData::class)
         ->enabled->toBeFalse()
+        ->order->toBe(3)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Yandex')
         ->credentials->toBe([
             'key'    => null,

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaravelLang\Config\Services;
 
 use Illuminate\Config\Repository;
+use Illuminate\Support\Collection;
 use LaravelLang\Config\Constants\RouteName;
 use LaravelLang\Config\Data\Common\NonPushableData;
 use LaravelLang\Config\Data\Common\PushableData;
@@ -126,11 +127,14 @@ class Config
 
     protected function getTranslators(): array
     {
-        return array_map(fn (array $item) => new TranslatorData(
-            enabled    : $item['enabled'] ?? true,
-            translator : $item['translator'],
-            credentials: $item['credentials'] ?? []
-        ), $this->value(Name::Shared, 'translators.channels'));
+        return (new Collection($this->value(Name::Shared, 'translators.channels')))->map(
+            fn (array $item) => new TranslatorData(
+                enabled    : $item['enabled'] ?? true,
+                translator : $item['translator'],
+                credentials: $item['credentials'] ?? [],
+                order      : $item['order']       ?? 0
+            )
+        )->sortBy(fn (TranslatorData $item) => $item->order)->all();
     }
 
     protected function value(
