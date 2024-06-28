@@ -13,14 +13,14 @@ beforeEach(function () {
     putenv('LOCALIZATION_SMART_ENABLED=true');
 
     config()->set(Name::Shared() . '.translators.channels.google.enabled', false);
-    config()->set(Name::Shared() . '.translators.channels.google.order', 5);
+    config()->set(Name::Shared() . '.translators.channels.google.priority', 5);
 
     config()->set(Name::Shared() . '.translators.channels.deepl.enabled', true);
-    config()->set(Name::Shared() . '.translators.channels.deepl.order', 6);
+    config()->set(Name::Shared() . '.translators.channels.deepl.priority', 6);
     config()->set(Name::Shared() . '.translators.channels.deepl.credentials.key', 'qwerty123');
 
     config()->set(Name::Shared() . '.translators.channels.yandex.enabled', true);
-    config()->set(Name::Shared() . '.translators.channels.yandex.order', 7);
+    config()->set(Name::Shared() . '.translators.channels.yandex.priority', 7);
     config()->set(Name::Shared() . '.translators.channels.yandex.credentials.key', 'qwerty456');
     config()->set(Name::Shared() . '.translators.channels.yandex.credentials.folder', '123');
 });
@@ -129,14 +129,14 @@ test('translators: all', function () {
     expect(Config::shared()->translators->channels->all['google'])
         ->toBeInstanceOf(TranslatorData::class)
         ->enabled->toBeFalse()
-        ->order->toBe(5)
+        ->priority->toBe(5)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Google')
         ->credentials->toBeEmpty();
 
     expect(Config::shared()->translators->channels->all['deepl'])
         ->toBeInstanceOf(TranslatorData::class)
         ->enabled->toBeTrue()
-        ->order->toBe(6)
+        ->priority->toBe(6)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Deepl')
         ->credentials->toBe([
             'key' => 'qwerty123',
@@ -145,7 +145,7 @@ test('translators: all', function () {
     expect(Config::shared()->translators->channels->all['yandex'])
         ->toBeInstanceOf(TranslatorData::class)
         ->enabled->toBeTrue()
-        ->order->toBe(7)
+        ->priority->toBe(7)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Yandex')
         ->credentials->toBe([
             'key'    => 'qwerty456',
