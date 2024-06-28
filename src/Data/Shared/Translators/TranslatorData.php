@@ -10,5 +10,6 @@ class TranslatorData
         public bool $enabled,
         public string $translator,
         public array $credentials = [],
+        public int $order = 0,
     ) {}
 }
