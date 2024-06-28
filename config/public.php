@@ -185,15 +185,15 @@ return [
             'google' => [
                 'translator' => '\LaravelLang\Translator\Integrations\Google',
 
-                'enabled' => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
-                'order'   => (int) env('TRANSLATION_GOOGLE_ORDER', 1),
+                'enabled'  => (bool) env('TRANSLATION_GOOGLE_ENABLED', true),
+                'priority' => (int) env('TRANSLATION_GOOGLE_PRIORITY', 1),
             ],
 
             'deepl' => [
                 'translator' => '\LaravelLang\Translator\Integrations\Deepl',
 
-                'enabled' => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
-                'order'   => (int) env('TRANSLATION_DEEPL_ORDER', 2),
+                'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
 
                 'credentials' => [
                     'key' => env('TRANSLATION_DEEPL_KEY'),
@@ -203,8 +203,8 @@ return [
             'yandex' => [
                 'translator' => '\LaravelLang\Translator\Integrations\Yandex',
 
-                'enabled' => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
-                'order'   => (int) env('TRANSLATION_YANDEX_ORDER', 3),
+                'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
+                'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
 
                 'credentials' => [
                     'key'    => env('TRANSLATION_YANDEX_KEY'),

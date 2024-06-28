@@ -132,9 +132,9 @@ class Config
                 enabled    : $item['enabled'] ?? true,
                 translator : $item['translator'],
                 credentials: $item['credentials'] ?? [],
-                order      : $item['order']       ?? 0
+                priority   : $item['priority']    ?? 0
             )
-        )->sortBy(fn (TranslatorData $item) => $item->order)->all();
+        )->sortBy(fn (TranslatorData $item) => $item->priority)->all();
     }
 
     protected function value(
