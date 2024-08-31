@@ -154,6 +154,17 @@ return [
         'suffix' => 'Translation',
 
         /*
+         * This option determines the need to filter localizations loaded
+         * in the relay when using eager loading.
+         *
+         * By default, true.
+         */
+
+        'filter' => [
+            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+        ],
+
+        /*
          * This option specifies a folder to store helper files for the IDE.
          *
          * By default, `vendor/_laravel_lang`

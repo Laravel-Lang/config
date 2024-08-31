@@ -111,6 +111,10 @@ test('models', function () {
         ->toBeString()
         ->toBe(realpath(dirname(__DIR__)))
         ->toBe(config('localization.models.helpers'));
+
+    expect(Config::shared()->models->filter)
+        ->enabled->toBeTrue()
+        ->enabled->toBe(config('localization.models.filter.enabled'));
 });
 
 test('translators: all', function () {

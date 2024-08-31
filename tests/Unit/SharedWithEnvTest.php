@@ -113,6 +113,7 @@ test('routes: redirect default', function () {
 test('models', function () {
     config()->set(Name::Shared() . '.models.suffix', 'qwerty');
     config()->set(Name::Shared() . '.models.helpers', realpath(dirname(__DIR__)));
+    config()->set(Name::Shared() . '.models.filter.enabled', false);
 
     expect(Config::shared()->models->suffix)
         ->toBeString()
@@ -123,6 +124,10 @@ test('models', function () {
         ->toBeString()
         ->toBe(realpath(dirname(__DIR__)))
         ->toBe(config('localization.models.helpers'));
+
+    expect(Config::shared()->models->filter)
+        ->enabled->toBeFalse()
+        ->enabled->toBe(config('localization.models.filter.enabled'));
 });
 
 test('translators: all', function () {
