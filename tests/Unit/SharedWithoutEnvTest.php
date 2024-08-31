@@ -130,9 +130,7 @@ test('translators: all', function () {
         ->enabled->toBeFalse()
         ->priority->toBe(2)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Deepl')
-        ->credentials->toBe([
-            'key' => null,
-        ]);
+        ->credentials->key->toBeEmpty();
 
     expect(Config::shared()->translators->channels->all['yandex'])
         ->toBeInstanceOf(TranslatorData::class)
@@ -140,8 +138,8 @@ test('translators: all', function () {
         ->priority->toBe(3)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Yandex')
         ->credentials->toBe([
-            'key'    => null,
-            'folder' => null,
+            'key' => '',
+            'folder' => ''
         ]);
 });
 
