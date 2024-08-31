@@ -12,6 +12,7 @@ use LaravelLang\Config\Data\Common\PushableData;
 use LaravelLang\Config\Data\Hidden\ModelsData as HiddenModelsData;
 use LaravelLang\Config\Data\HiddenData;
 use LaravelLang\Config\Data\Shared\ModelsData;
+use LaravelLang\Config\Data\Shared\ModelsFilterData;
 use LaravelLang\Config\Data\Shared\RouteNameData;
 use LaravelLang\Config\Data\Shared\RoutesData;
 use LaravelLang\Config\Data\Shared\SmartPunctuationData;
@@ -96,6 +97,14 @@ class Config
         return new ModelsData(
             suffix : $this->value(Name::Shared, 'models.suffix', fallback: 'Translation'),
             helpers: $this->value(Name::Shared, 'models.helpers', fallback: Path::helpers()),
+            filter : $this->modelsFilter(),
+        );
+    }
+
+    protected function modelsFilter(): ModelsFilterData
+    {
+        return new ModelsFilterData(
+            enabled: $this->value(Name::Shared, 'models.filter.enabled'),
         );
     }
 

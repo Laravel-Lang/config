@@ -111,6 +111,10 @@ test('models', function () {
         ->toBeString()
         ->toBe(realpath(dirname(__DIR__)))
         ->toBe(config('localization.models.helpers'));
+
+    expect(Config::shared()->models->filter)
+        ->enabled->toBeTrue()
+        ->enabled->toBe(config('localization.models.filter.enabled'));
 });
 
 test('translators: all', function () {
@@ -126,9 +130,7 @@ test('translators: all', function () {
         ->enabled->toBeFalse()
         ->priority->toBe(2)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Deepl')
-        ->credentials->toBe([
-            'key' => null,
-        ]);
+        ->credentials->key->toBeEmpty();
 
     expect(Config::shared()->translators->channels->all['yandex'])
         ->toBeInstanceOf(TranslatorData::class)
@@ -136,8 +138,8 @@ test('translators: all', function () {
         ->priority->toBe(3)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Yandex')
         ->credentials->toBe([
-            'key'    => null,
-            'folder' => null,
+            'key'    => '',
+            'folder' => '',
         ]);
 });
 

@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Data\Shared;
 
-class ModelsData
+class ModelsFilterData
 {
     public function __construct(
-        public string $suffix,
-        public string $helpers,
-        public ModelsFilterData $filter,
+        public bool $enabled,
     ) {}
 }
