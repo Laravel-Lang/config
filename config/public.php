@@ -207,7 +207,7 @@ return [
                 'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
 
                 'credentials' => [
-                    'key' => env('TRANSLATION_DEEPL_KEY'),
+                    'key' => (string) env('TRANSLATION_DEEPL_KEY'),
                 ],
             ],
 
@@ -218,8 +218,8 @@ return [
                 'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
 
                 'credentials' => [
-                    'key'    => env('TRANSLATION_YANDEX_KEY'),
-                    'folder' => env('TRANSLATION_FOLDER_ID'),
+                    'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
+                    'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
                 ],
             ],
         ],
