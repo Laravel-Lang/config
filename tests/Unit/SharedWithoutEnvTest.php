@@ -138,8 +138,8 @@ test('translators: all', function () {
         ->priority->toBe(3)
         ->translator->toBe('\LaravelLang\Translator\Integrations\Yandex')
         ->credentials->toBe([
-            'key' => '',
-            'folder' => ''
+            'key'    => '',
+            'folder' => '',
         ]);
 });
 
