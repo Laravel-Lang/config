@@ -104,7 +104,7 @@ class Config
     protected function modelsFilter(): ModelsFilterData
     {
         return new ModelsFilterData(
-            enabled: $this->value(Name::Shared, 'models.filter.enabled'),
+            enabled: (bool) $this->value(Name::Shared, 'models.filter.enabled'),
         );
     }
 
