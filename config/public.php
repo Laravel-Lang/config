@@ -103,9 +103,9 @@ return [
          * Default values:
          *
          *   parameter - locale
-         *   header    - X-Localization
-         *   cookie    - X-Localization
-         *   session   - X-Localization
+         *   header    - Accept-Language
+         *   cookie    - Accept-Language
+         *   session   - Accept-Language
          *   column    - column
          */
 
