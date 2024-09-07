@@ -8,5 +8,6 @@ class TranslatorOptionsData
 {
     public function __construct(
         public bool|string $preserveParameters
-    ) {}
+    ) {
+    }
 }

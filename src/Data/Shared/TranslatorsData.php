@@ -12,5 +12,6 @@ class TranslatorsData
     public function __construct(
         public TranslatorChannelsData $channels,
         public TranslatorOptionsData $options,
-    ) {}
+    ) {
+    }
 }

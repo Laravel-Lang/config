@@ -11,5 +11,6 @@ class TranslatorData
         public string $translator,
         public array $credentials = [],
         public int $priority = 0,
-    ) {}
+    ) {
+    }
 }

@@ -8,5 +8,6 @@ class ModelsData
 {
     public function __construct(
         public array|string $directory
-    ) {}
+    ) {
+    }
 }

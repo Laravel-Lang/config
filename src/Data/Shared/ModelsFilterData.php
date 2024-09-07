@@ -8,5 +8,6 @@ class ModelsFilterData
 {
     public function __construct(
         public bool $enabled,
-    ) {}
+    ) {
+    }
 }

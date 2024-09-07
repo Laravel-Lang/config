@@ -30,7 +30,8 @@ class Config
 {
     public function __construct(
         protected Repository $config
-    ) {}
+    ) {
+    }
 
     public function shared(): SharedData
     {
@@ -141,7 +142,7 @@ class Config
                 enabled    : $item['enabled'] ?? true,
                 translator : $item['translator'],
                 credentials: $item['credentials'] ?? [],
-                priority   : $item['priority']    ?? 0
+                priority   : $item['priority'] ?? 0
             )
         )->sortBy(fn (TranslatorData $item) => $item->priority)->all();
     }
@@ -153,7 +154,7 @@ class Config
         ?string $object = null,
         mixed $fallback = null
     ): mixed {
-        $main    = $name->value . '.' . $key;
+        $main = $name->value . '.' . $key;
         $default = $default ? $name->value . '.' . $default : null;
 
         if (is_null($object)) {

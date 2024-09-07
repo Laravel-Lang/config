@@ -12,5 +12,6 @@ class SmartPunctuationData
         public bool $enabled,
         public array $common,
         public NonPushableData $locales,
-    ) {}
+    ) {
+    }
 }
