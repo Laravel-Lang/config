@@ -37,7 +37,7 @@
     },
     "require-dev": {
         "orchestra/testbench": "^8.23 || ^9.1 || ^10.0",
-        "pestphp/pest": "^2.34"
+        "pestphp/pest": "^2.34 || ^3.0"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
