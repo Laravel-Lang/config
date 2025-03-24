@@ -132,6 +132,37 @@ return [
          */
 
         'redirect_default' => (bool) env('LOCALIZATION_REDIRECT_DEFAULT', false),
+
+        /*
+         * This option contains settings for routes. 
+         */
+
+        'group' => [
+            'middlewares' => [
+                /*
+                 * This option contains settings for routes without the prefix of the localization code.
+                 */
+
+                'default' => [
+                    'LaravelLang\Routes\Middlewares\LocalizationByCookie',
+                    'LaravelLang\Routes\Middlewares\LocalizationByHeader',
+                    'LaravelLang\Routes\Middlewares\LocalizationBySession',
+                    'LaravelLang\Routes\Middlewares\LocalizationByModel',
+                ],
+
+                /*
+                 * This option contains settings for routes with the prefix of the localization code.
+                 */
+
+                'prefix' => [
+                    'LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix',
+                    'LaravelLang\Routes\Middlewares\LocalizationByCookie',
+                    'LaravelLang\Routes\Middlewares\LocalizationByHeader',
+                    'LaravelLang\Routes\Middlewares\LocalizationBySession',
+                    'LaravelLang\Routes\Middlewares\LocalizationByModel',
+                ],
+            ],
+        ],
     ],
 
     /*
