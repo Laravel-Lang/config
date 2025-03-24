@@ -16,8 +16,7 @@ class PushableData
     public function __construct(
         protected readonly string $key,
         protected readonly ?string $default = null
-    ) {
-    }
+    ) {}
 
     public function all(): array
     {

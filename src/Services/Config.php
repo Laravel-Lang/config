@@ -69,7 +69,6 @@ class Config
         return new SmartPunctuationData(
             enabled: $this->value(Name::Shared, 'smart_punctuation.enable', fallback: false),
             common : $this->value(Name::Shared, 'smart_punctuation.common', fallback: []),
-
             locales: $this->value(
                 Name::Shared,
                 'smart_punctuation.locales',
@@ -154,7 +153,7 @@ class Config
                 enabled    : $item['enabled'] ?? true,
                 translator : $item['translator'],
                 credentials: $item['credentials'] ?? [],
-                priority   : $item['priority'] ?? 0
+                priority   : $item['priority']    ?? 0
             )
         )->sortBy(fn (TranslatorData $item) => $item->priority)->all();
     }

@@ -10,6 +10,5 @@ class ModelsData
         public string $suffix,
         public string $helpers,
         public ModelsFilterData $filter,
-    ) {
-    }
+    ) {}
 }

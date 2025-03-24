@@ -12,6 +12,5 @@ class RouteNameData
         public string $cookie,
         public string $session,
         public string $column,
-    ) {
-    }
+    ) {}
 }

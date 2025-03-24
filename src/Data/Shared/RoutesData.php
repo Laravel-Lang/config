@@ -11,6 +11,5 @@ class RoutesData
         public string $namePrefix,
         public bool $redirect,
         public RoutesGroup $group,
-    ) {
-    }
+    ) {}
 }
