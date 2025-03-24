@@ -13,6 +13,5 @@ class TranslatorChannelsData
     public function __construct(
         public array $all,
         public array $enabled,
-    ) {
-    }
+    ) {}
 }

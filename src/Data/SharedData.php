@@ -20,6 +20,5 @@ class SharedData
         public RoutesData $routes,
         public ModelsData $models,
         public TranslatorsData $translators,
-    ) {
-    }
+    ) {}
 }
