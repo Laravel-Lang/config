@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     /*
      * This option contains a list of translators that the Laravel Lang Translator project works with.
