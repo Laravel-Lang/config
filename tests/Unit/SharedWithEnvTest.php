@@ -23,6 +23,8 @@ beforeEach(function () {
     config()->set(Name::Shared() . '.translators.channels.yandex.priority', 7);
     config()->set(Name::Shared() . '.translators.channels.yandex.credentials.key', 'qwerty456');
     config()->set(Name::Shared() . '.translators.channels.yandex.credentials.folder', '123');
+
+    config()->set(Name::Shared() . '.routes.hide_default', Locale::English->value);
 });
 
 test('inline', function () {
@@ -108,6 +110,12 @@ test('routes: redirect default', function () {
     expect(Config::shared()->routes->redirect)
         ->toBeBool()
         ->toBe(config('localization.routes.redirect_default'));
+});
+
+test('routes: hide default', function () {
+    expect(Config::shared()->routes->hide)
+        ->toBeString()
+        ->toBe(config('localization.routes.hide_default'));
 });
 
 test('models', function () {
