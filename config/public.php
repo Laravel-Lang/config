@@ -139,7 +139,7 @@ return [
          * Applies when using the `localizedRoute` helper.
          */
 
-        'hide_default' => env('LOCALIZATION_HIDE_DEFAULT', false),
+        'hide_default' => env('LOCALIZATION_HIDE_DEFAULT'),
 
         // This option contains settings for routes.
 
