@@ -6,11 +6,11 @@ namespace LaravelLang\Config\Data\Shared;
 
 use LaravelLang\Config\Data\Shared\Translators\TranslatorChannelsData;
 use LaravelLang\Config\Data\Shared\Translators\TranslatorOptionsData;
+use Spatie\LaravelData\Data;
 
-class TranslatorsData
+class TranslatorsData extends Data
 {
-    public function __construct(
-        public TranslatorChannelsData $channels,
-        public TranslatorOptionsData $options,
-    ) {}
+    public TranslatorChannelsData $channels;
+
+    public TranslatorOptionsData $options;
 }

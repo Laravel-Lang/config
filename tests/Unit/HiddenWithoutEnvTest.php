@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LaravelLang\Config\Facades\Config;
+use LaravelLang\Config\Helpers\Config;
 
 test('plugins', function () {
     config(['localization-private.plugins' => ['foo', 'bar']]);
@@ -45,7 +45,7 @@ test('models', function () {
 });
 
 test('map', function () {
-    expect(Config::hidden()->map->all())
+    expect(Config::hidden()->map->toArray())
         ->toBeArray()
         ->toBe(config('localization-private.map'));
 });

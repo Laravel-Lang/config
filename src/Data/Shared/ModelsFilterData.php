@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Data\Shared;
 
-class ModelsFilterData
+use Spatie\LaravelData\Data;
+
+class ModelsFilterData extends Data
 {
-    public function __construct(
-        public bool $enabled,
-    ) {}
+    public bool $enabled;
 }

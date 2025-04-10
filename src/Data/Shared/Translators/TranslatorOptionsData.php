@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Data\Shared\Translators;
 
-class TranslatorOptionsData
+use Spatie\LaravelData\Data;
+
+class TranslatorOptionsData extends Data
 {
-    public function __construct(
-        public bool|string $preserveParameters
-    ) {}
+    public bool|string $preserveParameters;
 }
