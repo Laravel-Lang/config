@@ -7,7 +7,7 @@ namespace LaravelLang\Config;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use LaravelLang\Config\Enums\Name;
 
-class ServiceProvider extends BaseServiceProvider
+class LaravelLangConfigServiceProvider extends BaseServiceProvider
 {
     public function register(): void
     {
