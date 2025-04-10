@@ -26,7 +26,7 @@ trait HasValues
         return $this->value($main, $default);
     }
 
-    protected function value(string $key, ?string $default = null): mixed
+    public function value(string $key, ?string $default = null): mixed
     {
         if ($default) {
             return config($key) ?: config($default);

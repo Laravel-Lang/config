@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use LaravelLang\Config\Data\Shared\Translators\TranslatorData;
 use LaravelLang\Config\Enums\Name;
-use LaravelLang\Config\Facades\Config;
+use LaravelLang\Config\Helpers\Config;
 use LaravelLang\LocaleList\Locale;
 
 beforeEach(function () {
@@ -40,7 +40,7 @@ test('align', function () {
 });
 
 test('aliases', function () {
-    expect(Config::shared()->aliases->all())
+    expect(Config::shared()->aliases->toArray())
         ->toBeArray()
         ->toBe(config('localization.aliases'));
 });
@@ -59,7 +59,7 @@ test('smart punctuation: common', function () {
 });
 
 test('smart punctuation: locales', function () {
-    expect(Config::shared()->punctuation->locales->all())
+    expect(Config::shared()->punctuation->locales->toArray())
         ->toBeArray()
         ->toBe(config('localization.smart_punctuation.locales'));
 });

@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Data\Shared;
 
-class ModelsData
+use Spatie\LaravelData\Data;
+
+class ModelsData extends Data
 {
-    public function __construct(
-        public string $suffix,
-        public string $helpers,
-        public ModelsFilterData $filter,
-    ) {}
+    public string $suffix;
+
+    public string $helpers;
+
+    public ModelsFilterData $filter;
 }

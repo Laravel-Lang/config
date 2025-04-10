@@ -9,16 +9,21 @@ use LaravelLang\Config\Data\Shared\ModelsData;
 use LaravelLang\Config\Data\Shared\RoutesData;
 use LaravelLang\Config\Data\Shared\SmartPunctuationData;
 use LaravelLang\Config\Data\Shared\TranslatorsData;
+use Spatie\LaravelData\Data;
 
-class SharedData
+class SharedData extends Data
 {
-    public function __construct(
-        public bool $inline,
-        public bool $align,
-        public NonPushableData $aliases,
-        public SmartPunctuationData $punctuation,
-        public RoutesData $routes,
-        public ModelsData $models,
-        public TranslatorsData $translators,
-    ) {}
+    public bool $inline;
+
+    public bool $align;
+
+    public NonPushableData $aliases;
+
+    public SmartPunctuationData $punctuation;
+
+    public RoutesData $routes;
+
+    public ModelsData $models;
+
+    public TranslatorsData $translators;
 }

@@ -6,19 +6,19 @@ namespace LaravelLang\Config\Data\Common;
 
 use BackedEnum;
 use LaravelLang\Config\Concerns\HasValues;
+use Spatie\LaravelData\Data;
 
 use function config;
 
-class PushableData
+class PushableData extends Data
 {
     use HasValues;
 
-    public function __construct(
-        protected readonly string $key,
-        protected readonly ?string $default = null
-    ) {}
+    protected string $key;
 
-    public function all(): array
+    protected ?string $default = null;
+
+    public function toArray(): array
     {
         return $this->value($this->key, $this->default);
     }

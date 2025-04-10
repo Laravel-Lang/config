@@ -7,8 +7,9 @@ namespace LaravelLang\Config\Enums;
 use ArchTech\Enums\InvokableCases;
 
 /**
- * @method static string Shared()
+ * @method static string Config()
  * @method static string Hidden()
+ * @method static string Shared()
  */
 enum Name: string
 {
@@ -16,4 +17,5 @@ enum Name: string
 
     case Shared = 'localization';
     case Hidden = 'localization-private';
+    case Config = 'localization-config';
 }

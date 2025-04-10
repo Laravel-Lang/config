@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace LaravelLang\Config\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use LaravelLang\Config\Data\HiddenData;
-use LaravelLang\Config\Data\SharedData;
-use LaravelLang\Config\Services\Config as ConfigService;
+use LaravelLang\Config\Data\ConfigData;
+use LaravelLang\Config\Enums\Name;
 
-/**
- * @method static HiddenData hidden()
- * @method static SharedData shared()
- */
+use function config;
+
 class Config extends Facade
 {
-    protected static function getFacadeAccessor(): string
+    protected static function getFacadeAccessor(): ConfigData
     {
-        return ConfigService::class;
+        return ConfigData::from([
+            'shared' => config(Name::Shared()),
+            'hidden' => config(Name::Hidden()),
+        ]);
     }
 }

@@ -18,15 +18,4 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/translators.php', Name::Shared());
         $this->mergeConfigFrom(__DIR__ . '/../config/private.php', Name::Hidden());
     }
-
-    public function boot(): void
-    {
-        if (! $this->app->runningInConsole()) {
-            return;
-        }
-
-        $this->publishes([
-            __DIR__ . '/../config/public.php' => $this->app->configPath(Name::Shared() . '.php'),
-        ], ['config', Name::Shared()]);
-    }
 }

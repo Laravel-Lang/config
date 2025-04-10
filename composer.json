@@ -33,7 +33,8 @@
         "archtechx/enums": "^1.0",
         "illuminate/config": "^10.0 || ^11.0 || ^12.0",
         "illuminate/support": "^10.0 || ^11.0 || ^12.0",
-        "laravel-lang/locale-list": "^1.5"
+        "laravel-lang/locale-list": "^1.5",
+        "spatie/laravel-data": "^4.15"
     },
     "require-dev": {
         "orchestra/testbench": "^8.23 || ^9.1 || ^10.0",
