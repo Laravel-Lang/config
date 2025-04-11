@@ -10,7 +10,7 @@ class RoutesData
         public RouteNameData $names,
         public string $namePrefix,
         public bool $redirect,
-        public ?string $hide,
+        public bool $hide,
         public RoutesGroup $group,
     ) {}
 }

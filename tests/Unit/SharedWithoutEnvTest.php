@@ -100,7 +100,7 @@ test('routes: redirect default', function () {
 
 test('routes: hide default', function () {
     expect(Config::shared()->routes->hide)
-        ->toBeNull()
+        ->toBeBool()
         ->toBe(config('localization.routes.hide_default'));
 });
 
