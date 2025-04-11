@@ -110,6 +110,12 @@ test('routes: redirect default', function () {
         ->toBe(config('localization.routes.redirect_default'));
 });
 
+test('routes: hide default', function () {
+    expect(Config::shared()->routes->hide)
+        ->toBeBool()
+        ->toBe(config('localization.routes.hide_default'));
+});
+
 test('models', function () {
     config()->set(Name::Shared() . '.models.suffix', 'qwerty');
     config()->set(Name::Shared() . '.models.helpers', realpath(dirname(__DIR__)));

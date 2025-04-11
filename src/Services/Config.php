@@ -90,6 +90,7 @@ class Config
             ),
             namePrefix: $this->value(Name::Shared, 'routes.name_prefix', fallback: 'localized.'),
             redirect  : $this->value(Name::Shared, 'routes.redirect_default', fallback: false),
+            hide      : $this->value(Name::Shared, 'routes.hide_default', fallback: false),
             group     : new RoutesGroup(
                 middleware: $this->routesGroupMiddleware()
             ),
