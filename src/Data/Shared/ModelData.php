@@ -10,6 +10,7 @@ class ModelData extends Data
 {
     public function __construct(
         public string $suffix,
+        public string $directory,
         public string $helpers,
         public ModelFilterData $filter,
     ) {}

@@ -10,6 +10,14 @@ test('suffix', function (string $value) {
         ->toBe($value);
 })->with('foo bar');
 
+test('directory', function (string $value) {
+    setSharedConfig('models.directory', $value);
+
+    expect(getSharedConfig()->models->directory)
+        ->toBeString()
+        ->toBe($value);
+})->with('foo bar');
+
 test('helpers', function () {
     setSharedConfig('models.helpers', __DIR__);
 
