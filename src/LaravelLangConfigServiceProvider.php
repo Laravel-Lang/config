@@ -21,21 +21,38 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
         $this->laravelDataOptimizer();
     }
 
+    public function boot(): void
+    {
+        if (! $this->app->runningInConsole()) {
+            return;
+        }
+
+        $this->publishes([__DIR__ . '/../config/main.php'], ['config', Name::Main()]);
+        $this->publishes([__DIR__ . '/../config/models.php'], ['config', Name::Main(), Name::Models()]);
+        $this->publishes([__DIR__ . '/../config/routes.php'], ['config', Name::Main(), Name::Routes()]);
+        $this->publishes([__DIR__ . '/../config/punctuation.php'], ['config', Name::Main(), Name::Punctuation()]);
+        $this->publishes([__DIR__ . '/../config/translators.php'], ['config', Name::Main(), Name::Translators()]);
+    }
+
     protected function read(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/main.php', Name::Shared());
-        $this->mergeConfigFrom(__DIR__ . '/../config/models.php', Name::Shared());
-        $this->mergeConfigFrom(__DIR__ . '/../config/routes.php', Name::Shared());
-        $this->mergeConfigFrom(__DIR__ . '/../config/punctuation.php', Name::Shared());
-        $this->mergeConfigFrom(__DIR__ . '/../config/translators.php', Name::Shared());
-        $this->mergeConfigFrom(__DIR__ . '/../config/private.php', Name::Hidden());
+        $this->mergeConfigFrom(__DIR__ . '/../config/main.php', Name::Main());
+        $this->mergeConfigFrom(__DIR__ . '/../config/models.php', Name::Models());
+        $this->mergeConfigFrom(__DIR__ . '/../config/routes.php', Name::Routes());
+        $this->mergeConfigFrom(__DIR__ . '/../config/punctuation.php', Name::Punctuation());
+        $this->mergeConfigFrom(__DIR__ . '/../config/translators.php', Name::Translators());
+        $this->mergeConfigFrom(__DIR__ . '/../config/hidden.php', Name::Hidden());
     }
 
     protected function init(): void
     {
         $this->app->singleton(ConfigData::class, fn () => ConfigData::from([
-            'hidden' => config(Name::Hidden()),
-            'shared' => config(Name::Shared()),
+            'hidden'      => config(Name::Hidden()),
+            'main'        => config(Name::Main()),
+            'models'      => config(Name::Models()),
+            'routes'      => config(Name::Routes()),
+            'punctuation' => config(Name::Punctuation()),
+            'translators' => config(Name::Translators()),
         ]));
     }
 

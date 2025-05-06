@@ -10,7 +10,7 @@ use LaravelLang\Config\Data\Translators\TranslatorOptionsData;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Data;
 
-class TranslatorsData extends Data
+class TranslatorData extends Data
 {
     public function __construct(
         #[DataCollectionOf(TranslatorChannelData::class)]

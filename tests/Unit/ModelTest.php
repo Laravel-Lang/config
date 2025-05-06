@@ -2,34 +2,36 @@
 
 declare(strict_types=1);
 
-test('suffix', function (string $value) {
-    setSharedConfig('models.suffix', $value);
+use LaravelLang\Config\Enums\Name;
 
-    expect(getSharedConfig()->models->suffix)
+test('suffix', function (string $value) {
+    setConfig(Name::Models, 'suffix', $value);
+
+    expect(getConfig()->models->suffix)
         ->toBeString()
         ->toBe($value);
 })->with('foo bar');
 
 test('directory', function (string $value) {
-    setSharedConfig('models.directory', $value);
+    setConfig(Name::Models, 'directory', $value);
 
-    expect(getSharedConfig()->models->directory)
+    expect(getConfig()->models->directory)
         ->toBeString()
         ->toBe($value);
 })->with('foo bar');
 
 test('helpers', function () {
-    setSharedConfig('models.helpers', __DIR__);
+    setConfig(Name::Models, 'helpers', __DIR__);
 
-    expect(getSharedConfig()->models->helpers)
+    expect(getConfig()->models->helpers)
         ->toBeString()
         ->toBe(__DIR__);
 });
 
 test('filter', function (bool $is) {
-    setSharedConfig('models.filter.enabled', $is);
+    setConfig(Name::Models, 'filter.enabled', $is);
 
-    expect(getSharedConfig()->models->filter->enabled)
+    expect(getConfig()->models->filter->enabled)
         ->toBeBool()
         ->toBe($is);
 })->with('boolean');

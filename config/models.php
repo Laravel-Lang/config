@@ -8,40 +8,42 @@ declare(strict_types=1);
  * @see https://laravel-lang.com/configuration.html#models
  */
 return [
-    'models' => [
-        /*
-         * This option specifies a suffix for models containing translations.
-         *
-         * For example,
-         *   main model is `App\Models\Page`
-         *   translation model is `App\Models\PageTranslation`
-         *
-         * By default, `Translation`
-         */
+    /*
+     * This option specifies a suffix for models containing translations.
+     *
+     * For example,
+     *   main model is `App\Models\Page`
+     *   translation model is `App\Models\PageTranslation`
+     *
+     * By default, `Translation`
+     */
 
-        'suffix' => 'Translation',
+    'suffix' => 'Translation',
 
-        // This option specifies the path to the folder where the model files should be located.
+    /*
+     * This option specifies the path to the folder where the model files should be located.
+     *
+     * By default, app/Models
+     */
 
-        'directory' => app_path('Models'),
+    'directory' => app_path('Models'),
 
-        /*
-         * This option determines the need to filter localizations loaded
-         * in the relay when using eager loading.
-         *
-         * By default, true.
-         */
+    /*
+     * This option determines the need to filter localizations loaded
+     * in the relay when using eager loading.
+     *
+     * By default, true.
+     */
 
-        'filter' => [
-            'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
-        ],
-
-        /*
-         * This option specifies a folder to store helper files for the IDE.
-         *
-         * By default, `vendor/_laravel_lang`
-         */
-
-        'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
+    'filter' => [
+        'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
     ],
+
+    /*
+     * This option specifies a folder to store helper files for the IDE.
+     *
+     * By default, `vendor/_laravel_lang`
+     */
+
+    'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),
 ];

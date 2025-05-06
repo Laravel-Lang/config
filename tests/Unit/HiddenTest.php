@@ -6,42 +6,42 @@ use LaravelLang\Config\Enums\Name;
 use LaravelLang\LocaleList\Direction;
 
 test('plugins', function () {
-    setHiddenConfig('plugins', ['foo', 'bar']);
+    setConfig(Name::Hidden, 'plugins', ['foo', 'bar']);
 
-    expect(getHiddenConfig()->plugins->all())
+    expect(getConfig()->hidden->plugins->all())
         ->toBeArray()
         ->toBe(['foo', 'bar']);
 
-    getHiddenConfig()->plugins->push('baz');
+    getConfig()->hidden->plugins->push('baz');
 
-    expect(getHiddenConfig()->plugins->all())
+    expect(getConfig()->hidden->plugins->all())
         ->toBeArray()
         ->toBe(['foo', 'bar', 'baz']);
 });
 
 test('packages', function () {
-    setHiddenConfig('packages', ['foo', 'bar']);
+    setConfig(Name::Hidden, 'packages', ['foo', 'bar']);
 
-    expect(getHiddenConfig()->packages->all())
+    expect(getConfig()->hidden->packages->all())
         ->toBeArray()
         ->toBe(['foo', 'bar']);
 
-    getHiddenConfig()->packages->push('baz');
+    getConfig()->hidden->packages->push('baz');
 
-    expect(getHiddenConfig()->packages->all())
+    expect(getConfig()->hidden->packages->all())
         ->toBeArray()
         ->toBe(['foo', 'bar', 'baz']);
 });
 
 test('models', function () {
-    setHiddenConfig('models.directory', __DIR__);
+    setConfig(Name::Hidden, 'models.directory', __DIR__);
 
-    expect(getHiddenConfig()->models->directory)
+    expect(getConfig()->hidden->models->directory)
         ->toBe(__DIR__);
 });
 
 test('map', function () {
-    $source = getRawConfig('map', Name::Hidden);
+    $source = getRawConfig(Name::Hidden, 'map');
 
     foreach ($source as &$item) {
         $item['direction'] ??= Direction::LeftToRight;
@@ -49,7 +49,7 @@ test('map', function () {
         $item['direction'] = $item['direction']->value;
     }
 
-    expect(getHiddenConfig()->map->toArray())
+    expect(getConfig()->hidden->map->toArray())
         ->toBeArray()
         ->toBe($source);
 });
