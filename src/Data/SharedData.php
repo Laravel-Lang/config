@@ -4,21 +4,28 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Data;
 
-use LaravelLang\Config\Data\Common\NonPushableData;
-use LaravelLang\Config\Data\Shared\ModelsData;
+use Illuminate\Support\Collection;
+use LaravelLang\Config\Data\Casts\SimpleCollectionCast;
+use LaravelLang\Config\Data\Shared\ModelData;
+use LaravelLang\Config\Data\Shared\PunctuationData;
 use LaravelLang\Config\Data\Shared\RoutesData;
-use LaravelLang\Config\Data\Shared\SmartPunctuationData;
 use LaravelLang\Config\Data\Shared\TranslatorsData;
+use Spatie\LaravelData\Attributes\MapName;
+use Spatie\LaravelData\Attributes\WithCast;
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
-class SharedData
+#[MapName(SnakeCaseMapper::class)]
+class SharedData extends Data
 {
     public function __construct(
         public bool $inline,
         public bool $align,
-        public NonPushableData $aliases,
-        public SmartPunctuationData $punctuation,
+        #[WithCast(SimpleCollectionCast::class)]
+        public Collection $aliases,
+        public ModelData $models,
         public RoutesData $routes,
-        public ModelsData $models,
+        public PunctuationData $punctuation,
         public TranslatorsData $translators,
     ) {}
 }

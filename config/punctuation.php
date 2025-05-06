@@ -6,7 +6,7 @@ declare(strict_types=1);
  * This option determines the mechanism for converting translation
  * keys into a typographic version.
  *
- * @see https://laravel-lang.com/configuration.html#smart_punctuation
+ * @see https://laravel-lang.com/configuration.html#punctuation
  *
  * By default, false
  */
@@ -14,8 +14,8 @@ declare(strict_types=1);
 use LaravelLang\LocaleList\Locale;
 
 return [
-    'smart_punctuation' => [
-        'enable' => (bool) env('LOCALIZATION_SMART_ENABLED', false),
+    'punctuation' => [
+        'enabled' => (bool) env('LOCALIZATION_PUNCTUATION_ENABLED', false),
 
         'common' => [
             'double_quote_opener' => '“',

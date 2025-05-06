@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Config\Data\Shared;
+namespace LaravelLang\Config\Data\Shared\Routes;
 
-class RouteNameData
+use Spatie\LaravelData\Data;
+
+class RouteNameData extends Data
 {
     public function __construct(
         public string $parameter,
