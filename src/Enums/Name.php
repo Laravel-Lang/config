@@ -19,8 +19,8 @@ enum Name: string
 {
     use InvokableCases;
 
-    case All         = 'localization';
-    case Main        = 'localization-main';
+    case All         = 'localization-all';
+    case Main        = 'localization';
     case Models      = 'localization-models';
     case Routes      = 'localization-routes';
     case Punctuation = 'localization-punctuation';
