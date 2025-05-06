@@ -2,12 +2,24 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Str;
+use LaravelLang\Config\Constants\RouteName;
 use LaravelLang\Config\Enums\Name;
 
 test('names', function () {
     expect(getConfig()->routes->names)
         ->toArray()
         ->toBe(getRawConfig(Name::Routes, 'names'));
+
+    $class = new ReflectionClass(RouteName::class);
+
+    foreach ($class->getConstants() as $name => $value) {
+        $key = Str::lower($name);
+
+        expect(getConfig()->routes->names->{$key})
+            ->toBeString()
+            ->toBe($value);
+    }
 });
 
 test('name prefix', function () {
