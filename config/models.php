@@ -21,6 +21,10 @@ return [
 
         'suffix' => 'Translation',
 
+        // This option specifies the path to the folder where the model files should be located.
+
+        'directory' => app_path('Models'),
+
         /*
          * This option determines the need to filter localizations loaded
          * in the relay when using eager loading.
