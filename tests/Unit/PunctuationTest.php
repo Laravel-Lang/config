@@ -3,29 +3,30 @@
 declare(strict_types=1);
 
 use LaravelLang\Config\Data\SmartPunctuation\PunctuationItemData;
+use LaravelLang\Config\Enums\Name;
 use LaravelLang\LocaleList\Locale;
 
 test('enabled', function (bool $is) {
-    setSharedConfig('punctuation.enabled', $is);
+    setConfig(Name::Punctuation, 'enabled', $is);
 
-    expect(getSharedConfig()->punctuation->enabled)
+    expect(getConfig()->punctuation->enabled)
         ->toBeBool()
         ->toBe($is);
 })->with('boolean');
 
 test('common', function () {
-    expect(getSharedConfig()->punctuation->common)
+    expect(getConfig()->punctuation->common)
         ->toBeInstanceOf(PunctuationItemData::class)
         ->toArray()
-        ->toBe(config('localization.punctuation.common'));
+        ->toBe(getRawConfig(Name::Punctuation, 'common'));
 });
 
 test('locales', function (string $locale) {
-    $content = getRawConfig('punctuation.locales.' . $locale);
+    $content = getRawConfig(Name::Punctuation, 'locales.' . $locale);
 
     expect($content)->not->toBeEmpty();
 
-    expect(getSharedConfig()->punctuation->locales)
+    expect(getConfig()->punctuation->locales)
         ->toHaveKey($locale)
         ->get($locale)
         ->toArray()
@@ -33,7 +34,7 @@ test('locales', function (string $locale) {
 })->with('punctuation locales');
 
 test('unspecified locale', function () {
-    expect(getSharedConfig()->punctuation->locales)
+    expect(getConfig()->punctuation->locales)
         ->not->toHaveKey(Locale::Zulu->value)
         ->get(Locale::Zulu->value)
         ->toBeNull();

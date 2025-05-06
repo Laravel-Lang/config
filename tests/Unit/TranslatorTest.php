@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Enums\Name;
+
 test('channels', function (string $channel) {
-    expect(getSharedConfig()->translators->channels)
+    expect(getConfig()->translators->channels)
         ->toHaveKey($channel)
-        ->toHaveCount(count(getRawConfig('translators.channels')));
+        ->toHaveCount(count(getRawConfig(Name::Translators, 'channels')));
 })->with('translator channels');
 
 test('channel', function () {
-    setSharedConfig('translators.channels.foo', [
+    setConfig(Name::Translators, 'channels.foo', [
         'enabled'    => true,
         'translator' => 'Foo\\Bar',
         'priority'   => 123,
@@ -20,7 +22,7 @@ test('channel', function () {
         ],
     ]);
 
-    expect(getSharedConfig()->translators->channels->get('foo'))
+    expect(getConfig()->translators->channels->get('foo'))
         ->enabled->toBeTrue()
         ->translator->toBe('Foo\\Bar')
         ->priority->toBe(123)
@@ -28,9 +30,9 @@ test('channel', function () {
 });
 
 test('enabled', function (string $channel, bool $is) {
-    setSharedConfig("translators.channels.$channel.enabled", $is);
+    setConfig(Name::Translators, "channels.$channel.enabled", $is);
 
-    expect(getSharedConfig()->translators->channels)
+    expect(getConfig()->translators->channels)
         ->get($channel)
         ->enabled
         ->toBeBool()
@@ -38,9 +40,9 @@ test('enabled', function (string $channel, bool $is) {
 })->with('translator channels', 'boolean');
 
 test('options', function (bool $is) {
-    setSharedConfig('translators.options.preserve_parameters', $is);
+    setConfig(Name::Translators, 'options.preserve_parameters', $is);
 
-    expect(getSharedConfig()->translators->options->preserveParameters)
+    expect(getConfig()->translators->options->preserveParameters)
         ->toBeBool()
         ->toBe($is);
 })->with('boolean');

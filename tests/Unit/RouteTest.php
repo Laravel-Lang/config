@@ -2,26 +2,28 @@
 
 declare(strict_types=1);
 
+use LaravelLang\Config\Enums\Name;
+
 test('names', function () {
-    expect(getSharedConfig()->routes->names)
+    expect(getConfig()->routes->names)
         ->toArray()
-        ->toBe(config('localization.routes.names'));
+        ->toBe(getRawConfig(Name::Routes, 'names'));
 });
 
 test('name prefix', function () {
-    expect(getSharedConfig()->routes->namePrefix)
+    expect(getConfig()->routes->namePrefix)
         ->toBeString()
-        ->toBe(config('localization.routes.name_prefix'));
+        ->toBe(getRawConfig(Name::Routes, 'name_prefix'));
 });
 
 test('redirect default', function () {
-    expect(getSharedConfig()->routes->redirectDefault)
+    expect(getConfig()->routes->redirectDefault)
         ->toBeBool()
-        ->toBe(config('localization.routes.redirect_default'));
+        ->toBe(getRawConfig(Name::Routes, 'redirect_default'));
 });
 
 test('hide default', function () {
-    expect(getSharedConfig()->routes->hideDefault)
+    expect(getConfig()->routes->hideDefault)
         ->toBeBool()
-        ->toBe(config('localization.routes.hide_default'));
+        ->toBe(getRawConfig(Name::Routes, 'hide_default'));
 });
