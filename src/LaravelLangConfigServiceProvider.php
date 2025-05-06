@@ -27,11 +27,11 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
             return;
         }
 
-        $this->publishes([__DIR__ . '/../config/main.php'], ['config', Name::Main()]);
-        $this->publishes([__DIR__ . '/../config/models.php'], ['config', Name::Main(), Name::Models()]);
-        $this->publishes([__DIR__ . '/../config/routes.php'], ['config', Name::Main(), Name::Routes()]);
-        $this->publishes([__DIR__ . '/../config/punctuation.php'], ['config', Name::Main(), Name::Punctuation()]);
-        $this->publishes([__DIR__ . '/../config/translators.php'], ['config', Name::Main(), Name::Translators()]);
+        $this->publishes([__DIR__ . '/../config/main.php'], ['config', Name::All(), Name::Main()]);
+        $this->publishes([__DIR__ . '/../config/models.php'], ['config', Name::All(), Name::Models()]);
+        $this->publishes([__DIR__ . '/../config/routes.php'], ['config', Name::All(), Name::Routes()]);
+        $this->publishes([__DIR__ . '/../config/punctuation.php'], ['config', Name::All(), Name::Punctuation()]);
+        $this->publishes([__DIR__ . '/../config/translators.php'], ['config', Name::All(), Name::Translators()]);
     }
 
     protected function read(): void
