@@ -7,6 +7,7 @@ namespace LaravelLang\Config\Enums;
 use ArchTech\Enums\InvokableCases;
 
 /**
+ * @method static string All()
  * @method static string Main()
  * @method static string Models()
  * @method static string Punctuation()
@@ -18,7 +19,8 @@ enum Name: string
 {
     use InvokableCases;
 
-    case Main        = 'localization';
+    case All         = 'localization';
+    case Main        = 'localization-main';
     case Models      = 'localization-models';
     case Routes      = 'localization-routes';
     case Punctuation = 'localization-punctuation';
