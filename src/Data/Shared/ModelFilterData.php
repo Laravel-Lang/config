@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Data\Shared;
 
-class RoutesGroup
+use Spatie\LaravelData\Data;
+
+class ModelFilterData extends Data
 {
     public function __construct(
-        public RoutesGroupMiddleware $middleware,
+        public bool $enabled
     ) {}
 }

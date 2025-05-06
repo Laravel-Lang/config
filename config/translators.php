@@ -35,7 +35,7 @@ return [
                 'enabled'  => (bool) env('TRANSLATION_DEEPL_ENABLED', false),
                 'priority' => (int) env('TRANSLATION_DEEPL_PRIORITY', 2),
 
-                'credentials' => [
+                'meta' => [
                     'key' => (string) env('TRANSLATION_DEEPL_KEY'),
                 ],
             ],
@@ -46,7 +46,7 @@ return [
                 'enabled'  => (bool) env('TRANSLATION_YANDEX_ENABLED', false),
                 'priority' => (int) env('TRANSLATION_YANDEX_PRIORITY', 3),
 
-                'credentials' => [
+                'meta' => [
                     'key'    => (string) env('TRANSLATION_YANDEX_KEY'),
                     'folder' => (string) env('TRANSLATION_YANDEX_FOLDER_ID'),
                 ],
