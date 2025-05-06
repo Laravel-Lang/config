@@ -11,26 +11,11 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
 {
     public function register(): void
     {
-        $this->registerConfig();
-    }
-
-    public function boot(): void
-    {
-        if ($this->app->runningInConsole()) {
-            $this->bootPublishes();
-        }
-    }
-
-    protected function bootPublishes(): void
-    {
-        $this->publishes([
-            __DIR__ . '/../config/public.php' => $this->app->configPath(Name::Shared() . '.php'),
-        ], ['config', Name::Shared()]);
-    }
-
-    protected function registerConfig(): void
-    {
-        $this->mergeConfigFrom(__DIR__ . '/../config/public.php', Name::Shared());
+        $this->mergeConfigFrom(__DIR__ . '/../config/main.php', Name::Shared());
+        $this->mergeConfigFrom(__DIR__ . '/../config/models.php', Name::Shared());
+        $this->mergeConfigFrom(__DIR__ . '/../config/routes.php', Name::Shared());
+        $this->mergeConfigFrom(__DIR__ . '/../config/smart_punctuation.php', Name::Shared());
+        $this->mergeConfigFrom(__DIR__ . '/../config/translators.php', Name::Shared());
         $this->mergeConfigFrom(__DIR__ . '/../config/private.php', Name::Hidden());
     }
 }
