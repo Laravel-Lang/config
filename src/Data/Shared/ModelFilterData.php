@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace LaravelLang\Config\Data\Hidden;
+namespace LaravelLang\Config\Data\Shared;
 
 use Spatie\LaravelData\Data;
 
-class ModelsData extends Data
+class ModelFilterData extends Data
 {
     public function __construct(
-        public string $directory
+        public bool $enabled
     ) {}
 }
