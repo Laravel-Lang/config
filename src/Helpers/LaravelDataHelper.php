@@ -10,21 +10,19 @@ use function realpath;
 
 class LaravelDataHelper
 {
-    protected static bool $initialized = false;
+    protected static array $initialized = [];
 
     public static function initialize(string $path): void
     {
-        if (static::$initialized) {
+        if (static::$initialized[$path] ?? false) {
             return;
         }
 
-        $directories = static::directories();
-
-        if (! static::has($path, $directories)) {
+        if (! static::has($path, $directories = static::directories())) {
             static::push($path, $directories);
         }
 
-        static::$initialized = true;
+        static::$initialized[$path] = true;
     }
 
     protected static function has(string $path, array $directories): bool
