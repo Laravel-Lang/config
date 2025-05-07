@@ -12,13 +12,12 @@ class LaravelDataHelper
 {
     protected static bool $initialized = false;
 
-    public static function initialize(): void
+    public static function initialize(string $path): void
     {
         if (static::$initialized) {
             return;
         }
 
-        $path        = static::path();
         $directories = static::directories();
 
         if (! static::has($path, $directories)) {
@@ -52,10 +51,5 @@ class LaravelDataHelper
         $directories[] = $path;
 
         config()?->set('data.structure_caching.directories', $directories);
-    }
-
-    protected static function path(): string
-    {
-        return realpath(__DIR__ . '/../Data');
     }
 }

@@ -72,6 +72,6 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
 
     protected function laravelDataOptimizer(): void
     {
-        LaravelDataHelper::initialize();
+        LaravelDataHelper::initialize(__DIR__ . '/Data');
     }
 }
