@@ -41,7 +41,7 @@ test('models', function () {
 });
 
 test('map', function () {
-    $source = getRawConfig(Name::Hidden, 'map');
+    $source = getRawConfig(Name::Hidden, 'meta');
 
     foreach ($source as &$item) {
         $item['direction'] ??= Direction::LeftToRight;
@@ -49,7 +49,7 @@ test('map', function () {
         $item['direction'] = $item['direction']->value;
     }
 
-    expect(getConfig()->hidden->map->toArray())
+    expect(getConfig()->hidden->meta->toArray())
         ->toBeArray()
         ->toBe($source);
 });

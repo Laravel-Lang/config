@@ -7,7 +7,7 @@ namespace LaravelLang\Config\Data\Hidden;
 use LaravelLang\LocaleList\Direction;
 use Spatie\LaravelData\Data;
 
-class LocaleMapData extends Data
+class MetaData extends Data
 {
     public function __construct(
         public string $type,

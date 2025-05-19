@@ -6,7 +6,7 @@ namespace LaravelLang\Config\Data;
 
 use Illuminate\Support\Collection;
 use LaravelLang\Config\Data\Casts\SimpleCollectionCast;
-use LaravelLang\Config\Data\Hidden\LocaleMapData;
+use LaravelLang\Config\Data\Hidden\MetaData;
 use LaravelLang\Config\Data\Hidden\ModelsData;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Attributes\WithCast;
@@ -19,8 +19,8 @@ class HiddenData extends Data
         public Collection $plugins,
         #[WithCast(SimpleCollectionCast::class)]
         public Collection $packages,
-        #[DataCollectionOf(LocaleMapData::class)]
-        public Collection $map,
+        #[DataCollectionOf(MetaData::class)]
+        public Collection $meta,
         public ModelsData $models,
     ) {}
 }
