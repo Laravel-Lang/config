@@ -13,7 +13,7 @@ return [
         'directory' => base_path('app'),
     ],
 
-    'map' => [
+    'meta' => [
         Locale::Afrikaans->value => [
             'type'     => 'Latn',
             'regional' => 'af_ZA',
