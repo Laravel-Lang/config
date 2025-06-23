@@ -6,10 +6,6 @@
 [![Total Downloads][badge_downloads]][link_packagist]
 [![License][badge_license]][link_license]
 
-## Communication
-
-We also have official [chats](https://t.me/addlist/l0XGtvEIBiljMTMy) in Telegram.
-
 ## Contributing
 
 Please see [CONTRIBUTING](https://laravel-lang.com/contributions.html) for details.
