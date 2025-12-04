@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use LaravelLang\Config\Facades\Config;
+use LaravelLang\LocaleList\Locale;
 
 beforeAll(function () {
     putenv('LOCALIZATION_INLINE=true');
@@ -54,4 +55,16 @@ test('map', function () {
     expect(Config::hidden()->map->all())
         ->toBeArray()
         ->toBe(config('localization-private.map'));
+});
+
+test('map locales list', function () {
+    $locales = array_keys(Config::hidden()->map->all());
+
+    $available = Locale::values();
+
+    $diff1 = array_diff($locales, $available);
+    $diff2 = array_diff($available, $locales);
+
+    expect($diff1)->toBeEmpty();
+    expect($diff2)->toBeEmpty();
 });

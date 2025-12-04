@@ -212,6 +212,11 @@ return [
             'regional' => 'gu_IN',
         ],
 
+        Locale::HaitianCreole->value => [
+            'type'     => 'Latn',
+            'regional' => 'fr_HT',
+        ],
+
         Locale::Hausa->value => [
             'type'     => 'Latn',
             'regional' => 'ha_NG',
