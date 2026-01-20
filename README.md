@@ -37,6 +37,6 @@ This package is licensed under the [MIT License](https://laravel-lang.com/licens
 
 [link_build]:           https://github.com/laravel-lang/mona/actions
 
-[link_license]:         LICENSE
+[link_license]:         LICENSE.md
 
 [link_packagist]:       https://packagist.org/packages/laravel-lang/mona
