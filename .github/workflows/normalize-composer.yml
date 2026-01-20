@@ -12,7 +12,7 @@ jobs:
     normalize:
         runs-on: ubuntu-latest
 
-        name: Dependencies
+        name: Normalize
 
         steps:
             -   name: Checkout code
