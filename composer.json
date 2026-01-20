@@ -3,10 +3,26 @@
     "description": "Easily connect the necessary language packs to the application",
     "license": "MIT",
     "type": "library",
+    "keywords": [
+        "lang",
+        "languages",
+        "laravel",
+        "laravel-lang",
+        "locale",
+        "locales",
+        "localization",
+        "translation",
+        "translations"
+    ],
+    "support": {
+        "issues": "https://github.com/Laravel-Lang/mona/issues",
+        "source": "https://github.com/Laravel-Lang/mona"
+    },
     "authors": [
         {
             "name": "Andrey Helldar",
-            "email": "helldar@dragon-code.pro"
+            "email": "helldar@dragon-code.pro",
+            "homepage": "https://dragon-code.pro"
         },
         {
             "name": "Laravel-Lang Team",
