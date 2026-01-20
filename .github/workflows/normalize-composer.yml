@@ -12,7 +12,7 @@ jobs:
     normalize:
         runs-on: ubuntu-latest
 
-        name: Dependency
+        name: Dependencies
 
         steps:
             -   name: Checkout code
@@ -31,7 +31,7 @@ jobs:
 
             -   name: Normalize Packages
                 run: |
-                    for entry in "src/*"; do
+                    for entry in "src"; do
                         name=$(basename "$entry")
                     
                         composer normalize -d "$entry"
