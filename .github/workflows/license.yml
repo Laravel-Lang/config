@@ -1,0 +1,33 @@
+name: Update license
+
+on:
+    schedule:
+        -   cron: '0 3 1 1 *'
+    workflow_dispatch:
+
+jobs:
+    Update:
+        uses: TheDragonCode/.github/.github/workflows/license.yml@main
+        with:
+            path: |
+                LICENSE.md
+                src/Actions/LICENSE.md
+                src/Attributes/LICENSE.md
+                src/Common/LICENSE.md
+                src/Config/LICENSE.md
+                src/HttpStatuses/LICENSE.md
+                src/JsonFallback/LICENSE.md
+                src/Lang/LICENSE.md
+                src/Library/LICENSE.md
+                src/LocaleList/LICENSE.md
+                src/Locales/LICENSE.md
+                src/Models/LICENSE.md
+                src/MoonShine/LICENSE.md
+                src/NativeCountryNames/LICENSE.md
+                src/NativeCurrencyNames/LICENSE.md
+                src/NativeLocaleNames/LICENSE.md
+                src/Publisher/LICENSE.md
+                src/Routes/LICENSE.md
+                src/StarterKits/LICENSE.md
+                src/StatusGenerator/LICENSE.md
+                src/TranslationsTemplate/LICENSE.md
