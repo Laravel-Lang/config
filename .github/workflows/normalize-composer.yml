@@ -1,0 +1,58 @@
+name: Normalize Composer
+
+on:
+    push:
+        branches: [ main ]
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    normalize:
+        runs-on: ubuntu-latest
+
+        name: Dependency
+
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v6
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv
+                    coverage: xdebug
+                env:
+                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            -   name: Install dependencies
+                run: composer install --prefer-dist --no-progress --no-interaction
+
+            -   name: Normalize Packages
+                run: |
+                    for entry in "src/*"; do
+                        name=$(basename "$entry")
+                    
+                        composer normalize -d "$entry"
+                    fi
+
+            -   name: Create a Pull Request
+                uses: peter-evans/create-pull-request@v8
+                id: pullRequest
+                with:
+                    branch: composer-normalize
+                    branch-suffix: random
+                    delete-branch: true
+                    title: "🦋 composer.json was Normalized"
+                    commit-message: 🦋 composer.json was Normalized
+                    body: composer.json was Normalized
+                    labels: dependencies
+                    add-paths: |
+                        composer.json
+                        src/**/composer.json
+
+            -   name: Merge PR
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                run: gh pr merge --merge --auto ${{ steps.pullRequest.outputs.pull-request-number }}
