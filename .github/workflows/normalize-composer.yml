@@ -20,11 +20,6 @@ jobs:
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
-                with:
-                    extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv
-                    coverage: xdebug
-                env:
-                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             -   name: Normalize Packages
                 run: |
