@@ -1,4 +1,4 @@
-name: Test Dependencies
+name: Install Dependencies
 
 on: [ push, pull_request, workflow_dispatch ]
 
@@ -45,13 +45,6 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php }}
-                    extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv
-                    coverage: xdebug
-                env:
-                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-            -   name: Change directory to package
-                run: cd src/${{ matrix.package }}
 
             -   name: Install dependencies
-                run: composer require laravel/framework:^${{ matrix.laravel }}
+                run: composer -W src/${{ matrix.package }} require laravel/framework:^${{ matrix.laravel }}
