@@ -10,6 +10,14 @@ permissions:
     pull-requests: write
 
 jobs:
+    main:
+        runs-on: ubuntu-latest
+        
+        steps:
+            -   uses: TheDragonCode/.github/.github/workflows/preview.yml@main
+                with:
+                    config: .github/previews/Documentation.yml
+
     search:
         runs-on: ubuntu-latest
         outputs:
@@ -51,15 +59,8 @@ jobs:
                     fetch-depth: 0
 
             -   name: Update preview
-                uses: TheDragonCode/github-preview-updater@v2
-                id: preview
+                uses: TheDragonCode/.github/.github/workflows/preview.yml@main
                 with:
                     token: ${{ secrets.GITHUB_TOKEN }}
                     config: ${{ matrix.package.config }}
                     readme: ${{ matrix.package.readme }}
-
-            - name: Merge PR
-              if: steps.preview.outputs.pullRequestNumber != ''
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: gh pr merge --merge --delete-branch ${{ steps.preview.outputs.pullRequestNumber }}
