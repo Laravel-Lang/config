@@ -78,7 +78,8 @@ jobs:
                 run: composer global require ergebnis/composer-normalize
 
             -   id: set-dirs
-                run: echo "::set-output name=directories::$(find $GITHUB_WORKSPACE/src -type d | jq -R -s -c 'split("\n")')"
+                run: |
+                    echo "::set-output name=directories::$(find $GITHUB_WORKSPACE/src -mindepth 1 -maxdepth 1 -type d | jq -R -s -c 'split("\n")[:-1] | map({path: ., name: (split("/") | last)})')"
 
     normalize:
         needs: packages
@@ -88,11 +89,11 @@ jobs:
             matrix:
                 directory: ${{ fromJson(needs.packages.outputs.directories) }}
 
-        name: Normalize ${{ matrix.directory }}
+        name: Normalize ${{ matrix.directory.name }}
 
         steps:
             -   name: Normalize
-                run: composer normalize -d "${{ matrix.directory }}"
+                run: composer normalize -d "${{ matrix.directory.path }}"
     
     pullRequest:
         needs: normalize
