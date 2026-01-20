@@ -26,9 +26,6 @@ jobs:
                 env:
                     COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-            -   name: Install dependencies
-                run: composer install --prefer-dist --no-progress --no-interaction
-
             -   name: Normalize Packages
                 run: |
                     for entry in "./src"; do
