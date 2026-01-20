@@ -31,8 +31,8 @@ jobs:
 
             -   name: Normalize Packages
                 run: |
-                    for entry in "./src"; do
-                        composer normalize -d "$(basename "$entry")"
+                    for entry in "$GITHUB_WORKSPACE/src/*"; do
+                        composer normalize -d "$entry"
                     done
 
             -   name: Create a Pull Request
