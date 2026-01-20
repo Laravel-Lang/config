@@ -1,0 +1,65 @@
+name: Preview Updater
+
+on:
+    schedule:
+        -   cron: '20 2 * * *'
+    workflow_dispatch:
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    search:
+        runs-on: ubuntu-latest
+        outputs:
+            files: ${{ steps.readme.outputs.files }}
+        steps:
+            -   uses: actions/checkout@v6
+
+            -   name: Searching for README files
+                run: |
+                    files=$(find "$GITHUB_WORKSPACE/src" -type d -print0 | while IFS= read -r -d '' directory; do
+                        name=$(basename "$directory")
+                    
+                        readme=src/$(name)/README.md
+                    
+                        if [ -f "{$GITHUB_WORKSPACE}/.github/previews/{$name}.yml" ]; then
+                            config=".github/previews/{$name}.yml"
+                        else
+                            config=""
+                        fi
+                    
+                        jq -n --arg name "$name" --argjson readme "$readme" --arg config "$config" '{name: $name, readme: $readme, config: $config}'
+                    done | jq -s -c '.')
+                    
+                    echo "files=$files" >> $GITHUB_OUTPUT
+
+    update:
+        needs: search
+        runs-on: ubuntu-latest
+        
+        strategy:
+            matrix:
+                package: ${{ fromJson(needs.search.outputs.files) }}
+
+        name: Update preview for ${{ matrix.package.name }}
+
+        steps:
+            -   uses: actions/checkout@v6
+                with:
+                    fetch-depth: 0
+
+            -   name: Update preview
+                uses: TheDragonCode/github-preview-updater@v2
+                id: preview
+                with:
+                    token: ${{ secrets.GITHUB_TOKEN }}
+                    config: ${{ matrix.package.config }}
+                    readme: ${{ matrix.package.readme }}
+
+            - name: Merge PR
+              if: steps.preview.outputs.pullRequestNumber != ''
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: gh pr merge --merge --delete-branch ${{ steps.preview.outputs.pullRequestNumber }}
