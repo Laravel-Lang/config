@@ -79,7 +79,7 @@ jobs:
 
             -   id: set-dirs
                 run: |
-                    echo "::set-output name=directories::$(find $GITHUB_WORKSPACE/src -mindepth 2 -maxdepth 2 -type f -name composer.json -print0 | xargs -0 -n1 dirname | jq -R -s -c 'split("\n")[:-1] | map({path: ., name: (split("/") | last)})')"
+                    echo "directories=$(find $GITHUB_WORKSPACE/src -mindepth 2 -maxdepth 2 -type f -name composer.json -print0 | xargs -0 -n1 dirname | jq -R -s -c 'split("\n")[:-1] | map({path: ., name: (split("/") | last)})')" >> $GITHUB_OUTPUT
 
     normalize:
         needs: packages
