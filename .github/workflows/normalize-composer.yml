@@ -32,7 +32,13 @@ jobs:
             -   name: Normalize Packages
                 run: |
                     for entry in "$GITHUB_WORKSPACE/src/*"; do
-                        composer normalize -d "$entry"
+                        if [ -d "$entry" ] && [ -f "$entry/composer.json" ]; then
+                            echo "Normalizing $entry"
+
+                            composer normalize -d "$entry"
+                        else
+                            echo "Skipping $entry"
+                        fi
                     done
 
             -   name: Create a Pull Request
