@@ -9,10 +9,11 @@ permissions:
     pull-requests: write
 
 jobs:
-    packages:
+    normalize:
         runs-on: ubuntu-latest
-        outputs:
-            directories: ${{ steps.set-dirs.outputs.directories }}
+        
+        name: Normalize
+        
         steps:
             -   uses: actions/checkout@v6
             -   uses: shivammathur/setup-php@v2
@@ -25,42 +26,18 @@ jobs:
             -   name: Install Normalizer
                 run: composer global require ergebnis/composer-normalize
 
-            -   id: set-dirs
+            -   name: Normalize Packages
                 run: |
-                    directories=$(find "$GITHUB_WORKSPACE/src" -type d -print0 | while IFS= read -r -d '' directory; do
-                        name=$(basename "$directory")
-
-                        if [ -f "$directory/composer.json" ]; then
-                            has_composer=true
+                    for entry in "$GITHUB_WORKSPACE"/src/*; do
+                        if [ -d "$entry" ] && [ -f "$entry/composer.json" ]; then
+                            echo "[NORMALIZE] $entry"
+                    
+                            composer normalize -d "$entry"
                         else
-                            has_composer=false
+                            echo "[SKIP] $entry"
                         fi
+                    done
 
-                        jq -n --arg directory "$directory" --arg name "$name" --argjson hasComposer "$has_composer" '{directory: $directory, name: $name, hasComposer: $hasComposer}'
-                    done | jq -s -c '.')
-
-                    echo "directories=$directories" >> $GITHUB_OUTPUT
-
-    normalize:
-        needs: packages
-        runs-on: ubuntu-latest
-
-        strategy:
-            matrix:
-                package: ${{ fromJson(needs.packages.outputs.directories) }}
-
-        name: Normalize ${{ matrix.package.name }}
-
-        steps:
-            -   name: Normalize
-                if: ${{ matrix.package.hasComposer }}
-                run: composer normalize -d "${{ matrix.package.directory }}"
-    
-    pullRequest:
-        needs: normalize
-        runs-on: ubuntu-latest
-        
-        steps:
             -   name: Create a Pull Request
                 uses: peter-evans/create-pull-request@v8
                 id: pullRequest
