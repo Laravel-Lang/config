@@ -31,8 +31,9 @@ jobs:
 
             -   name: Normalize Packages
                 run: |
-                    for entry in "src"; do
+                    for entry in "./src"; do
                         composer normalize -d "$(basename "$entry")"
+                    done
 
             -   name: Create a Pull Request
                 uses: peter-evans/create-pull-request@v8
