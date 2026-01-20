@@ -84,6 +84,7 @@ jobs:
     normalize:
         needs: packages
         runs-on: ubuntu-latest
+        if: ${{ hashFiles(format('{0}/composer.json', matrix.directory.path)) != '' }}
         
         strategy:
             matrix:
