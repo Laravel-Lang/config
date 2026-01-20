@@ -39,7 +39,7 @@ jobs:
                         jq -n --arg directory "$directory" --arg name "$name" --argjson hasComposer "$has_composer" '{directory: $directory, name: $name, hasComposer: $hasComposer}'
                     done | jq -s -c '.')
 
-                    echo "::set-output name=directories::$directories"
+                    echo "directories=$directories" >> $GITHUB_OUTPUT
 
     normalize:
         needs: packages
