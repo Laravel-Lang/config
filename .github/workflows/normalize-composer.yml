@@ -79,7 +79,19 @@ jobs:
 
             -   id: set-dirs
                 run: |
-                    echo "directories=$(find $GITHUB_WORKSPACE/src -mindepth 2 -maxdepth 2 -type f -name composer.json -print0 | xargs -0 -n1 dirname | jq -R -s -c 'split("\n")[:-1] | map({path: ., name: (split("/") | last)})')" >> $GITHUB_OUTPUT
+                    directories=$(find "$GITHUB_WORKSPACE/src" -type d -print0 | while IFS= read -r -d '' directory; do
+                        name=$(basename "$directory")
+
+                        if [ -f "$directory/composer.json" ]; then
+                            has_composer=true
+                        else
+                            has_composer=false
+                        fi
+
+                        jq -n --arg directory "$directory" --arg name "$name" --argjson hasComposer "$has_composer" '{directory: $directory, name: $name, hasComposer: $hasComposer}'
+                    done | jq -s -c '.')
+
+                    echo "::set-output name=directories::$directories"
 
     normalize:
         needs: packages
@@ -87,15 +99,14 @@ jobs:
         
         strategy:
             matrix:
-                directory: ${{ fromJson(needs.packages.outputs.directories) }}
+                package: ${{ fromJson(needs.packages.outputs.directories) }}
 
-        name: Normalize ${{ matrix.directory.name }}
+        name: Normalize ${{ matrix.package.name }}
+        if: ${{ matrix.package.hasComposer }}
 
         steps:
-            -   uses: actions/checkout@v6
-
             -   name: Normalize
-                run: composer normalize -d "${{ matrix.directory.path }}"
+                run: composer normalize -d "${{ matrix.package.directory }}"
     
     pullRequest:
         needs: normalize
