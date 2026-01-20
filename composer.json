@@ -65,5 +65,8 @@
         "branch-alias": {
             "dev-main": "17.x-dev"
         }
+    },
+    "scripts": {
+        "test": "pest"
     }
 }
