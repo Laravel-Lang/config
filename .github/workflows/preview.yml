@@ -26,6 +26,7 @@ jobs:
             -   uses: actions/checkout@v6
 
             -   name: Searching for README files
+                id: readme
                 run: |
                     files=$(find "$GITHUB_WORKSPACE/src" -type d -print0 | while IFS= read -r -d '' directory; do
                         name=$(basename "$directory")
