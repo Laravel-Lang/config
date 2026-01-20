@@ -23,7 +23,7 @@ jobs:
                     - LocaleList
                     - Locales
                     - Models
-                    - Moonshine
+                    - MoonShine
                     - NativeCountryNames
                     - NativeCurrencyNames
                     - NativeLocaleNames
@@ -31,6 +31,7 @@ jobs:
                     - Routes
                     - StarterKits
                     - StatusGenerator
+                    - TranslationsTemplate
                 php: [ "8.3", "8.4", "8.5" ]
                 laravel: [ "11.0", "12.0" ]
 
