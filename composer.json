@@ -14,10 +14,6 @@
         "translation",
         "translations"
     ],
-    "support": {
-        "issues": "https://github.com/Laravel-Lang/mona/issues",
-        "source": "https://github.com/Laravel-Lang/mona"
-    },
     "authors": [
         {
             "name": "Andrey Helldar",
@@ -30,6 +26,10 @@
         }
     ],
     "homepage": "https://laravel-lang.com",
+    "support": {
+        "issues": "https://github.com/Laravel-Lang/mona/issues",
+        "source": "https://github.com/Laravel-Lang/mona"
+    },
     "require": {
         "php": "^8.3",
         "archtechx/enums": "^1.1"
