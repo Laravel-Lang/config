@@ -17,17 +17,12 @@ jobs:
         name: PHP ${{ matrix.php }}, Laravel ${{ matrix.laravel }}
 
         steps:
-            -   name: Checkout code
-                uses: actions/checkout@v6
+            -   uses: actions/checkout@v6
 
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php }}
-                    extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv
-                    coverage: xdebug
-                env:
-                    COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             -   name: Install dependencies
                 run: composer require laravel/framework:^${{ matrix.laravel }}
