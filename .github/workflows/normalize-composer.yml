@@ -92,6 +92,8 @@ jobs:
         name: Normalize ${{ matrix.directory.name }}
 
         steps:
+            -   uses: actions/checkout@v6
+
             -   name: Normalize
                 run: composer normalize -d "${{ matrix.directory.path }}"
     
