@@ -26,7 +26,7 @@ jobs:
                     composer global config --no-plugins allow-plugins.ergebnis/composer-normalize true
                     composer config --no-plugins allow-plugins.ergebnis/composer-normalize true
 
-            -   name: Install Composer dependencies
+            -   name: Install Normalizer
                 run: composer global require ergebnis/composer-normalize
 
             -   name: Normalize Packages
