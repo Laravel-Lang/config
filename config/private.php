@@ -197,6 +197,11 @@ return [
             'regional' => 'de_DE',
         ],
 
+        Locale::GermanAustria->value => [
+            'type'     => 'Latn',
+            'regional' => 'de_AT',
+        ],
+
         Locale::GermanSwitzerland->value => [
             'type'     => 'Latn',
             'regional' => 'de_CH',
