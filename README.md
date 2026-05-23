@@ -29,9 +29,9 @@ This package is licensed under the [MIT License](https://laravel-lang.com/licens
 
 [badge_build]:          https://img.shields.io/github/actions/workflow/status/laravel-lang/mona/tests.yml?style=flat-square
 
-[badge_downloads]:      https://img.shields.io/packagist/dt/laravel-lang/mona.svg?style=flat-square
+[badge_downloads]:      https://img.shields.io/packagist/dt/laravel-lang/lang.svg?style=flat-square
 
-[badge_license]:        https://img.shields.io/packagist/l/laravel-lang/mona.svg?style=flat-square
+[badge_license]:        https://img.shields.io/packagist/l/laravel-lang/lang.svg?style=flat-square
 
 [badge_stable]:         https://img.shields.io/github/v/release/laravel-lang/mona?label=stable&style=flat-square
 
@@ -39,4 +39,4 @@ This package is licensed under the [MIT License](https://laravel-lang.com/licens
 
 [link_license]:         LICENSE.md
 
-[link_packagist]:       https://packagist.org/packages/laravel-lang/mona
+[link_packagist]:       https://packagist.org/packages/laravel-lang/lang
