@@ -5,6 +5,34 @@ labels:
     - feature
 
 body:
+    -   type: input
+        id: environment-package-name
+        attributes:
+            label: Lang Package Name
+            description: The name of the package in which the bug was found.
+            options:
+                - laravel-lang/actions
+                - laravel-lang/attributes
+                - laravel-lang/common
+                - laravel-lang/config
+                - laravel-lang/http-statuses
+                - laravel-lang/json-fallback
+                - laravel-lang/lang
+                - laravel-lang/library
+                - laravel-lang/locale-list
+                - laravel-lang/locales
+                - laravel-lang/models
+                - laravel-lang/moonshine
+                - laravel-lang/native-country-names
+                - laravel-lang/native-currency-names
+                - laravel-lang/native-locale-names
+                - laravel-lang/publisher
+                - laravel-lang/routes
+                - laravel-lang/starter-kits
+                - laravel-lang/status-generator
+        validations:
+            required: true
+
     -   type: textarea
         id: description
         attributes:
