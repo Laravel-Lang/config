@@ -1,6 +1,6 @@
 ---
-name: locales
-description: Localization codes and their languages. Use when you need to translate text into a specific language.
+name: language-matrix
+description: AI skill for managing multilingual translation matrices in Laravel Lang repositories. Defines deterministic rules for translating and synchronizing localization files between source directories and target locales, including path mapping, language routing, exclusion rules, and consistency validation across localization packages.
 ---
 
 ## Localization codes and their languages
