@@ -52,7 +52,7 @@ body:
         attributes:
             label: Laravel Framework Version
             description: The version of the Laravel framework in which you encountered the problem.
-            placeholder: 12.47.0
+            placeholder: 13.11.0
         validations:
             required: true
 
@@ -60,7 +60,7 @@ body:
         id: environment-php
         attributes:
             label: PHP Version
-            placeholder: 8.5.2
+            placeholder: 8.5.6
         validations:
             required: true
 
