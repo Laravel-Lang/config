@@ -9,11 +9,6 @@ disable-model-invocation: false
 
 Adds a new package to the project. The result will be a new package in the Laravel Lang repository.
 
-1. Request the package name
-2. Create directories and files
-3. Add to GitHub actions
-4. Add to another location.
-
 ## Inputs
 
 - required `--name <package-name>`
