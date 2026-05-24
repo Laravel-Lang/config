@@ -1,6 +1,6 @@
 name: Tests
 
-on: [ push, pull_request, workflow_dispatch ]
+on: [ push, pull_request ]
 
 permissions: read-all
 
@@ -12,7 +12,7 @@ jobs:
             fail-fast: true
             matrix:
                 php: [ "8.3", "8.4", "8.5" ]
-                laravel: [ "11.0", "12.0" ]
+                laravel: [ "11.0", "12.0", "13.0" ]
 
         name: PHP ${{ matrix.php }}, Laravel ${{ matrix.laravel }}
 
@@ -24,7 +24,7 @@ jobs:
                     php-version: ${{ matrix.php }}
 
             -   name: Install dependencies
-                run: composer require laravel/framework:^${{ matrix.laravel }}
+                run: composer require --dev laravel/framework:^${{ matrix.laravel }}
 
             -   name: Execute tests
                 run: composer test
