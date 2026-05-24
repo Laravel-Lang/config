@@ -2,10 +2,6 @@
 vendor/
 
 .cache
-.DS_Store
-.env
-.php_cs.cache
-.phpintel
 .temp
 
 *.bak
