@@ -1,5 +1,6 @@
-.idea/
-vendor/
+/.idea/
+/.junie
+/vendor/
 
 .cache
 .temp
