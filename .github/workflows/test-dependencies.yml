@@ -27,7 +27,7 @@ jobs:
                 php: [ "8.3", "8.4", "8.5" ]
                 laravel: [ "11.0", "12.0", "13.0" ]
 
-        name: Package ${{ matrix.package }}, PHP ${{ matrix.php }}, Laravel ${{ matrix.laravel }}
+        name: ${{ matrix.directory }}, PHP ${{ matrix.php }}, Lr ${{ matrix.laravel }}
 
         steps:
             -   uses: actions/checkout@v6
