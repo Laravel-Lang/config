@@ -1,0 +1,23 @@
+{
+    ":inviterName has invited you to join the :teamName team.": ":inviterName has invited you to join the :teamName team.",
+    "Accept invitation": "Accept invitation",
+    "An invitation has already been sent to this email address.": "An invitation has already been sent to this email address.",
+    "Invitation cancelled.": "Invitation cancelled.",
+    "Invitation sent.": "Invitation sent.",
+    "Member removed.": "Member removed.",
+    "Member role updated.": "Member role updated.",
+    "Password updated.": "Password updated.",
+    "Profile updated.": "Profile updated.",
+    "status": "status",
+    "Team created.": "Team created.",
+    "Team deleted.": "Team deleted.",
+    "Team updated.": "Team updated.",
+    "The team name does not match.": "The team name does not match.",
+    "The team owner cannot be removed.": "The team owner cannot be removed.",
+    "This invitation has already been accepted.": "This invitation has already been accepted.",
+    "This invitation has expired.": "This invitation has expired.",
+    "This invitation was sent to a different email address.": "This invitation was sent to a different email address.",
+    "This team name is reserved and cannot be used.": "This team name is reserved and cannot be used.",
+    "This user is already a member of the team.": "This user is already a member of the team.",
+    "You've been invited to join :teamName": "You've been invited to join :teamName"
+}
