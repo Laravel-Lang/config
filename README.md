@@ -10,6 +10,28 @@
 [![Github Workflow Status][badge_build]][link_build]
 [![License][badge_license]][link_license]
 
+## TODO
+
+- [x] Actions
+- [x] Attributes
+- [x] Common
+- [x] HttpStatuses
+- [x] JsonFallback
+- [x] Lang
+- [ ] Library
+- [x] LocaleList
+- [ ] Locales
+- [ ] Models
+- [x] MoonShine
+- [ ] NativeCountryNames
+- [ ] NativeCurrencyNames
+- [ ] NativeLocaleNames
+- [ ] Publisher
+- [ ] Routes
+- [x] StarterKits
+- [x] TranslationsTemplate
+- [ ] tests
+
 ## Documentation
 
 See the [documentation](https://laravel-lang.com) for detailed installation.
