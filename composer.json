@@ -64,7 +64,13 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "LaravelLang\\": "src/"
+            "LaravelLang\\": "src/",
+            "LaravelLang\\JsonFallback\\": "src/JsonFallback/src/",
+            "LaravelLang\\LocaleList\\": "src/LocaleList/src/",
+            "LaravelLang\\Locales\\": "src/Locales/src/",
+            "LaravelLang\\Models\\": "src/Models/src/",
+            "LaravelLang\\Publisher\\": "src/Publisher/src/",
+            "LaravelLang\\Routes\\": "src/Routes/src/"
         }
     },
     "autoload-dev": {
