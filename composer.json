@@ -87,11 +87,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "extra": {
-        "branch-alias": {
-            "dev-main": "20.x-dev"
-        }
-    },
     "scripts": {
         "test": "vendor/bin/pest --parallel"
     }
