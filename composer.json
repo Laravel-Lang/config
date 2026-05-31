@@ -40,9 +40,6 @@
         "pestphp/pest": "^4.0",
         "symfony/var-dumper": "^7.4 || ^8.0"
     },
-    "conflict": {
-        "laravel-lang/*": "*"
-    },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
