@@ -75,7 +75,8 @@
         "test": "vendor/bin/pest --parallel",
         "data:update": [
             "@disableProcessTimeout",
-            "@php bin/mona cldr:country"
+            "@php bin/mona cldr:country",
+            "@php bin/mona cldr:locale"
         ],
         "disableProcessTimeout": "Composer\\Config::disableProcessTimeout"
     }

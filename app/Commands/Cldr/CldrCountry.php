@@ -8,12 +8,6 @@ final class CldrCountry extends CldrCommand
 {
     protected string $directory = __DIR__ . '/../../../src/NativeCountryNames/data';
 
-    protected function configure(): void
-    {
-        $this->setName('cldr:country')
-            ->setDescription('Update country names from CLDR');
-    }
-
     protected function perform(string $forCode, string $locale): array
     {
         return [
