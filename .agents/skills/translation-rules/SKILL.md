@@ -15,6 +15,7 @@ description: Contains rules for translating phrases and sentences into other lan
 3. If the target file is located in a `**/locales/<code>` directory, use the translation rules for the locale language whose code is specified in the directory name.
 4. Never translate files in the `**/locales/en` directory into English, because they are already translated into English.
 5. In all other cases that do not match items 3 and 4 in this list, always translate into English.
+6. Key names must remain unchanged. Only array values within files are subject to translation into other languages.
 
 ## Translation Process
 
