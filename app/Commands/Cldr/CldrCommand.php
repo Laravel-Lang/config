@@ -47,7 +47,7 @@ abstract class CldrCommand extends Command
         return self::SUCCESS;
     }
 
-    abstract protected function perform(string $forCode, string $locale): array|string;
+    abstract protected function perform(string $forCode, string $locale): array|string|null;
 
     protected function handle(string $code): void
     {
