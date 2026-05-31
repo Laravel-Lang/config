@@ -8,15 +8,15 @@ description: Contains rules for translating phrases and sentences into other lan
 
 # Translation Rules
 
-## Принципы
+## Principles
 
-1. Никогда не переводи на другие языки файлы `_settings.json` и `_exclude.json`.
-2. Если целевой файл находится в папке `**/locales/<code>` - используй правила перевода на язык той локализации, код которой указан в имени папки.
-3. Никогда не переводи файлы в папке `**/locales/en` на английский язык — они уже переведены на него.
-4. Во всех остальных случаях, не подходящих под пункты 2 и 3 этого списка, всегда переводи на английский язык.
+1. Never translate `_settings.json` and `_exclude.json` files into other languages.
+2. If the target file is located in a `**/locales/<code>` directory, use the translation rules for the locale language whose code is specified in the directory name.
+3. Never translate files in the `**/locales/en` directory into English, because they are already translated into English.
+4. In all other cases that do not match items 2 and 3 in this list, always translate into English.
 
-## Процесс перевода
+## Translation Process
 
-1. Для начала, определи код локализации из пути к файлу, для которого нужно осуществить перевод содержимого на другой язык. Например, для пути `**/locales/de_AT/php.json`, код локализации `de_AT`.
-2. По полученному коду, найди в файле `src/LocaleList/src/Locale.php` соответствие названию языка (value — это код локализации, а name — название).
-3. Переведи содержимое файла на указанный язык.
+1. First, determine the locale code from the path of the file whose contents need to be translated into another language. For example, for the path `**/locales/de_AT/php.json`, the locale code is `de_AT`.
+2. Using the resulting code, find the matching language name in `src/LocaleList/src/Locale.php` (`value` is the locale code, and `name` is the name).
+3. Translate the file contents into the specified language.
