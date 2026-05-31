@@ -11,9 +11,10 @@ description: Contains rules for translating phrases and sentences into other lan
 ## Principles
 
 1. Never translate `_settings.json` and `_exclude.json` files into other languages.
-2. If the target file is located in a `**/locales/<code>` directory, use the translation rules for the locale language whose code is specified in the directory name.
-3. Never translate files in the `**/locales/en` directory into English, because they are already translated into English.
-4. In all other cases that do not match items 2 and 3 in this list, always translate into English.
+2. Never translate files from the `src/Native*Names` folders into other languages.
+3. If the target file is located in a `**/locales/<code>` directory, use the translation rules for the locale language whose code is specified in the directory name.
+4. Never translate files in the `**/locales/en` directory into English, because they are already translated into English.
+5. In all other cases that do not match items 3 and 4 in this list, always translate into English.
 
 ## Translation Process
 
