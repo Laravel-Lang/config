@@ -32,8 +32,13 @@
     },
     "require": {
         "php": "^8.3",
+        "ext-json": "*",
         "archtechx/enums": "^1.1",
-        "illuminate/support": "^12.0 || ^13.0"
+        "illuminate/support": "*",
+        "laravel/prompts": "^0.3.18",
+        "punic/punic": "^3.8",
+        "symfony/console": "^7.0 || ^8.0",
+        "vlucas/phpdotenv": "^5.6"
     },
     "require-dev": {
         "orchestra/testbench": "^10.0 || ^11.0",
@@ -44,7 +49,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "LaravelLang\\": "src/",
+            "LaravelLang\\Mona\\": "app/",
             "LaravelLang\\JsonFallback\\": "src/JsonFallback/src/",
             "LaravelLang\\LocaleList\\": "src/LocaleList/src/",
             "LaravelLang\\Locales\\": "src/Locales/src/",
@@ -67,6 +72,10 @@
         "sort-packages": true
     },
     "scripts": {
-        "test": "vendor/bin/pest --parallel"
+        "test": "vendor/bin/pest --parallel",
+        "data:update": [
+            "@disableProcessTimeout"
+        ],
+        "disableProcessTimeout": "Composer\\Config::disableProcessTimeout"
     }
 }

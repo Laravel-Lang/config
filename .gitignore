@@ -1,6 +1,7 @@
 /.idea/
 /.junie
 /vendor/
+/node_modules/
 
 .cache
 .temp
