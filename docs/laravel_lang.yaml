@@ -1,7 +1,0 @@
-plugins:
-    -   vendor: 'some/name'
-        version?: '^1.0'
-        project?: true
-        files:
-            -   source: 'livewire/main/livewire.json'
-                target: '{locale}.json'
