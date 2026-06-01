@@ -13,9 +13,6 @@
 
 .env
 
-composer.lock
-package-lock.json
-
 biome.json
 pint.json
 rector.php
