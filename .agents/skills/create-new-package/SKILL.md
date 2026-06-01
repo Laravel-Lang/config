@@ -41,3 +41,5 @@ Before any writing, validate the final target package name:
 5. Add `src/<package_namespace>` to the `.github/dependabot.yml` file.
 
 6. Create a directory `src/<package_namespace>` and copy the `LICENSE.md` file into it.
+
+7. Add `src/<package_namespace>` to the `directories` list in the `.github/dependabot.yml` file.
