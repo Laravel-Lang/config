@@ -25,5 +25,4 @@ updates:
             - src/Publisher
             - src/Routes
             - src/StarterKits
-            - src/StatusGenerator
             - src/TranslationsTemplate
