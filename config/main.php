@@ -14,6 +14,16 @@ return [
     'inline' => (bool) env('LOCALIZATION_INLINE', false),
 
     /*
+     * Do arrays need to be aligned by keys before processing arrays?
+     *
+     * @see https://laravel-lang.com/configuration.html#alignment
+     *
+     * By default, true
+     */
+
+    'align' => (bool) env('LOCALIZATION_ALIGN', true),
+
+    /*
      * The language codes chosen for the files in this repository may not
      * match the preferences for your project.
      *
