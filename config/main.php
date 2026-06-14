@@ -3,6 +3,23 @@
 declare(strict_types=1);
 
 return [
+    /**
+     * Defines the localization style.
+     *
+     * Available options: formal, informal.
+     *
+     * Example:
+     *
+     * ```
+     * formal:   Bitte bestätigen Sie Ihre E-Mail-Adresse.
+     * informal: Bitte bestätige deine E-Mail-Adresse.
+     * ```
+     *
+     * By default, formal
+     */
+
+    'style' => 'formal',
+
     /*
      * Determines what type of files to use when updating language files.
      *
@@ -12,16 +29,6 @@ return [
      */
 
     'inline' => (bool) env('LOCALIZATION_INLINE', false),
-
-    /*
-     * Do arrays need to be aligned by keys before processing arrays?
-     *
-     * @see https://laravel-lang.com/configuration.html#alignment
-     *
-     * By default, true
-     */
-
-    'align' => (bool) env('LOCALIZATION_ALIGN', true),
 
     /*
      * The language codes chosen for the files in this repository may not
