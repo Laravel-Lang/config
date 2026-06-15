@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace LaravelLang\Config;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use LaravelLang\Config\Data\ConfigData;
 use LaravelLang\Config\Enums\Name;
-use LaravelLang\Config\Helpers\LaravelDataHelper;
 
-use function config;
+use function strtolower;
 
 class LaravelLangConfigServiceProvider extends BaseServiceProvider
 {
     public function register(): void
     {
-        $this->read();
-        $this->init();
-
-        $this->laravelDataOptimizer();
+        foreach (Name::cases() as $case) {
+            $this->mergeConfigFrom(
+                path: __DIR__ . '/../config/' . $this->filename($case) . '.php',
+                key : $case->value
+            );
+        }
     }
 
     public function boot(): void
@@ -27,51 +27,17 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
             return;
         }
 
-        $this->publishes([
-            __DIR__ . '/../config/main.php' => config_path(Name::Main() . '.php'),
-        ], ['config', Name::All(), Name::Main()]);
+        foreach (Name::cases() as $case) {
+            $filename = $this->filename($case);
 
-        $this->publishes([
-            __DIR__ . '/../config/models.php' => config_path(Name::Models() . '.php'),
-        ], ['config', Name::All(), Name::Models()]);
-
-        $this->publishes([
-            __DIR__ . '/../config/routes.php' => config_path(Name::Routes() . '.php'),
-        ], ['config', Name::All(), Name::Routes()]);
-
-        $this->publishes([
-            __DIR__ . '/../config/punctuation.php' => config_path(Name::Punctuation() . '.php'),
-        ], ['config', Name::All(), Name::Punctuation()]);
-
-        $this->publishes([
-            __DIR__ . '/../config/translators.php' => config_path(Name::Translators() . '.php'),
-        ], ['config', Name::All(), Name::Translators()]);
+            $this->publishes([
+                __DIR__ . '/../config/' . $filename . '.php' => $this->app->configPath($case->value . '.php'),
+            ], ['config', $case->name]);
+        }
     }
 
-    protected function read(): void
+    protected function filename(Name $name): string
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/main.php', Name::Main());
-        $this->mergeConfigFrom(__DIR__ . '/../config/models.php', Name::Models());
-        $this->mergeConfigFrom(__DIR__ . '/../config/routes.php', Name::Routes());
-        $this->mergeConfigFrom(__DIR__ . '/../config/punctuation.php', Name::Punctuation());
-        $this->mergeConfigFrom(__DIR__ . '/../config/translators.php', Name::Translators());
-        $this->mergeConfigFrom(__DIR__ . '/../config/hidden.php', Name::Hidden());
-    }
-
-    protected function init(): void
-    {
-        $this->app->singleton(ConfigData::class, fn () => ConfigData::from([
-            'hidden'      => config(Name::Hidden()),
-            'main'        => config(Name::Main()),
-            'models'      => config(Name::Models()),
-            'routes'      => config(Name::Routes()),
-            'punctuation' => config(Name::Punctuation()),
-            'translators' => config(Name::Translators()),
-        ]));
-    }
-
-    protected function laravelDataOptimizer(): void
-    {
-        LaravelDataHelper::initialize(__DIR__ . '/Data');
+        return strtolower($name->value);
     }
 }
