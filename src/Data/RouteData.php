@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace LaravelLang\Config\Data;
 
 use Illuminate\Container\Attributes\Config;
+use LaravelLang\Config\Data\Routes\MiddlewareData;
+use LaravelLang\Config\Data\Routes\RouteNameData;
 
 final readonly class RouteData
 {
@@ -16,7 +18,6 @@ final readonly class RouteData
         public bool $redirectDefault,
         #[Config('localization_routes.hide_default')]
         public bool $hideDefault,
-        #[Config('localization_routes.middlewares')]
-        public array $middlewares,
+        public MiddlewareData $middleware,
     ) {}
 }
