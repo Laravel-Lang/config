@@ -25,8 +25,10 @@ return [
 
     'locales' => [
         Locale::French->value => [
-            'double_quote_opener' => '«&nbsp;',
-            'double_quote_closer' => '&nbsp;»',
+            // A real U+00A0, written as an escape so it stays visible: an HTML entity
+            // would be published verbatim into the lang files.
+            'double_quote_opener' => "«\u{a0}",
+            'double_quote_closer' => "\u{a0}»",
             'single_quote_opener' => '‘',
             'single_quote_closer' => '’',
         ],
