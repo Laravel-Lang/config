@@ -47,7 +47,6 @@
         "spatie/laravel-data": "^4.15"
     },
     "require-dev": {
-        "dragon-code/support": "^6.16",
         "orchestra/testbench": "^9.1 || ^10.0 || ^11.0",
         "pestphp/pest": "^3.0 || ^4.0"
     },
