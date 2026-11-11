@@ -8,7 +8,7 @@ use Illuminate\Container\Attributes\Config;
 
 use function array_merge;
 
-class PunctuationConfig
+readonly class PunctuationConfig
 {
     public function __construct(
         #[Config('localization_punctuation.enabled')]

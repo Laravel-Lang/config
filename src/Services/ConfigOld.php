@@ -17,7 +17,6 @@ use LaravelLang\Config\Data\Shared\RouteNameData;
 use LaravelLang\Config\Data\Shared\RoutesData;
 use LaravelLang\Config\Data\Shared\RoutesGroup;
 use LaravelLang\Config\Data\Shared\RoutesGroupMiddleware;
-use LaravelLang\Config\Data\Shared\SmartPunctuationData;
 use LaravelLang\Config\Data\Shared\Translators\TranslatorChannelsData;
 use LaravelLang\Config\Data\Shared\Translators\TranslatorData;
 use LaravelLang\Config\Data\Shared\Translators\TranslatorOptionsData;
@@ -31,15 +30,13 @@ use function is_null;
 class ConfigOld
 {
     public function __construct(
-        protected Repository $config
+        protected Repository $config,
     ) {}
 
     public function shared(): SharedData
     {
         return new SharedData(
-            routes     : $this->routes(),
-            models     : $this->models(),
-            translators: $this->translators(),
+            models: $this->models(),
         );
     }
 
@@ -136,7 +133,7 @@ class ConfigOld
                 enabled    : $item['enabled'] ?? true,
                 translator : $item['translator'],
                 credentials: $item['credentials'] ?? [],
-                priority   : $item['priority']    ?? 0
+                priority   : $item['priority'] ?? 0
             )
         )->sortBy(fn (TranslatorData $item) => $item->priority)->all();
     }
@@ -146,7 +143,7 @@ class ConfigOld
         string $key,
         ?string $default = null,
         ?string $object = null,
-        mixed $fallback = null
+        mixed $fallback = null,
     ): mixed {
         $main    = $name->value . '.' . $key;
         $default = $default ? $name->value . '.' . $default : null;

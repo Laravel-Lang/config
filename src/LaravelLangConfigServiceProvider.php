@@ -11,6 +11,7 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
     protected array $files = [
         'localization_main',
         'localization_punctuation',
+        'localization_routes',
     ];
 
     public function register(): void
