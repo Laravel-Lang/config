@@ -9,7 +9,6 @@ use LaravelLang\Config\Data\Common\NonPushableData;
 class SmartPunctuationData
 {
     public function __construct(
-        public bool $enabled,
         public array $common,
         public NonPushableData $locales,
     ) {}

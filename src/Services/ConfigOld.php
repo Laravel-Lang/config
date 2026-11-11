@@ -28,7 +28,7 @@ use LaravelLang\Config\Helpers\Path;
 
 use function is_null;
 
-class Config
+class ConfigOld
 {
     public function __construct(
         protected Repository $config
@@ -37,7 +37,6 @@ class Config
     public function shared(): SharedData
     {
         return new SharedData(
-            punctuation: $this->smartPunctuation(),
             routes     : $this->routes(),
             models     : $this->models(),
             translators: $this->translators(),
@@ -58,20 +57,6 @@ class Config
     {
         return new HiddenModelsData(
             directory: $this->value(Name::Hidden, 'models.directory', fallback: Path::app()),
-        );
-    }
-
-    protected function smartPunctuation(): SmartPunctuationData
-    {
-        return new SmartPunctuationData(
-            enabled: $this->value(Name::Shared, 'smart_punctuation.enable', fallback: false),
-            common : $this->value(Name::Shared, 'smart_punctuation.common', fallback: []),
-            locales: $this->value(
-                Name::Shared,
-                'smart_punctuation.locales',
-                'smart_punctuation.common',
-                NonPushableData::class
-            ),
         );
     }
 

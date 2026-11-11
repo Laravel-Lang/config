@@ -7,7 +7,7 @@ namespace LaravelLang\Config\Facades;
 use Illuminate\Support\Facades\Facade;
 use LaravelLang\Config\Data\HiddenData;
 use LaravelLang\Config\Data\SharedData;
-use LaravelLang\Config\Services\Config as ConfigService;
+use LaravelLang\Config\Services\ConfigOld as ConfigService;
 
 /**
  * @method static HiddenData hidden()

@@ -14,7 +14,6 @@ class SharedData
 {
     public function __construct(
         public NonPushableData $aliases,
-        public SmartPunctuationData $punctuation,
         public RoutesData $routes,
         public ModelsData $models,
         public TranslatorsData $translators,
