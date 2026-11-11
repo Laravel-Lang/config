@@ -9,9 +9,15 @@ use LaravelLang\Config\Enums\Name;
 
 class ServiceProvider extends BaseServiceProvider
 {
+    protected array $files = [
+        'localization_main',
+    ];
+
     public function register(): void
     {
         $this->registerConfig();
+
+        $this->mergeConfigFrom(__DIR__ . '/../config/localization_main.php', 'localization_main');
     }
 
     public function boot(): void
@@ -19,8 +25,19 @@ class ServiceProvider extends BaseServiceProvider
         if ($this->app->runningInConsole()) {
             $this->bootPublishes();
         }
+
+        if (! $this->app->runningInConsole()) {
+            return;
+        }
+
+        foreach ($this->files as $filename) {
+            $this->publishes([
+                __DIR__ . "/../config/$filename.php",
+            ], ['config', 'localization', $filename]);
+        }
     }
 
+    /** @deprecated */
     protected function bootPublishes(): void
     {
         $this->publishes([
@@ -28,6 +45,7 @@ class ServiceProvider extends BaseServiceProvider
         ], ['config', Name::Shared()]);
     }
 
+    /** @deprecated */
     protected function registerConfig(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/public.php', Name::Shared());

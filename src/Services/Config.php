@@ -37,9 +37,6 @@ class Config
     public function shared(): SharedData
     {
         return new SharedData(
-            inline     : (bool) $this->value(Name::Shared, 'inline', fallback: false),
-            align      : (bool) $this->value(Name::Shared, 'align', fallback: true),
-            aliases    : $this->value(Name::Shared, 'aliases', object: NonPushableData::class),
             punctuation: $this->smartPunctuation(),
             routes     : $this->routes(),
             models     : $this->models(),

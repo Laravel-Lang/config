@@ -13,8 +13,6 @@ use LaravelLang\Config\Data\Shared\TranslatorsData;
 class SharedData
 {
     public function __construct(
-        public bool $inline,
-        public bool $align,
         public NonPushableData $aliases,
         public SmartPunctuationData $punctuation,
         public RoutesData $routes,
