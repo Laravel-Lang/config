@@ -12,7 +12,7 @@ use function config;
 
 class Alias
 {
-    public function fromAlias(Locale|LocaleData|string|null $value): ?string
+    public function from(Locale|LocaleData|string|null $value): ?string
     {
         if (! $locale = $this->stringify($value)) {
             return null;
@@ -21,7 +21,7 @@ class Alias
         return $this->items()->flip()->get($locale, $locale);
     }
 
-    public function toAlias(Locale|LocaleData|string|null $value): ?string
+    public function to(Locale|LocaleData|string|null $value): ?string
     {
         if (! $locale = $this->stringify($value)) {
             return null;
