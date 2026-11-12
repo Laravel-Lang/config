@@ -30,6 +30,10 @@ return [
 
     'filter' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
 
+    'directories' => [
+        app_path('Models'),
+    ],
+
     /*
      * This option specifies a folder to store helper files for the IDE.
      *

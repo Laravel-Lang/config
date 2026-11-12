@@ -13,6 +13,8 @@ readonly class ModelConfig
         public string $suffix,
         #[Config('localization_models.filter')]
         public bool $filter,
+        #[Config('localization_models.directories')]
+        public array $directories,
         #[Config('localization_models.helpers')]
         public string $helpers,
     ) {}

@@ -15,7 +15,5 @@ class PrivateConfig
         public array $packages,
         #[Config('localization_private.map')]
         public array $map,
-        #[Config('localization_private.models.directory')]
-        public array|string $modelsDirectory,
     ) {}
 }
