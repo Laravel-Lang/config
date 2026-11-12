@@ -6,6 +6,7 @@ namespace LaravelLang\Config\Services;
 
 use Illuminate\Container\Attributes\Config;
 
+/** @deprecated */
 class PrivateConfig
 {
     public function __construct(
@@ -13,7 +14,5 @@ class PrivateConfig
         public array $plugins,
         #[Config('localization_private.packages')]
         public array $packages,
-        #[Config('localization_private.map')]
-        public array $map,
     ) {}
 }
