@@ -22,6 +22,7 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
                 key : $filename
             );
         }
+        $this->qqq();
     }
 
     public function boot(): void
@@ -35,5 +36,18 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
                 __DIR__ . "/../config/$filename.php",
             ], ['config', 'localization', $filename]);
         }
+    }
+
+    /** @deprecated */
+    protected function qqq(): void
+    {
+        $this->mergeConfigFrom(
+            path: __DIR__ . '/../config/private.php',
+            key : 'localization-private',
+        );
+        $this->mergeConfigFrom(
+            path: __DIR__ . '/../config/public.php',
+            key : 'localization',
+        );
     }
 }
