@@ -10,6 +10,7 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
 {
     protected array $files = [
         'localization_main',
+        'localization_models',
         'localization_punctuation',
         'localization_routes',
     ];
@@ -44,10 +45,6 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
         $this->mergeConfigFrom(
             path: __DIR__ . '/../config/private.php',
             key : 'localization-private',
-        );
-        $this->mergeConfigFrom(
-            path: __DIR__ . '/../config/public.php',
-            key : 'localization',
         );
     }
 }

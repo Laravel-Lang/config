@@ -33,12 +33,6 @@ class ConfigOld
         protected Repository $config,
     ) {}
 
-    public function shared(): SharedData
-    {
-        return new SharedData(
-            models: $this->models(),
-        );
-    }
 
     public function hidden(): HiddenData
     {
@@ -73,15 +67,6 @@ class ConfigOld
             group     : new RoutesGroup(
                 middleware: $this->routesGroupMiddleware()
             ),
-        );
-    }
-
-    protected function models(): ModelsData
-    {
-        return new ModelsData(
-            suffix : $this->value(Name::Shared, 'models.suffix', fallback: 'Translation'),
-            helpers: $this->value(Name::Shared, 'models.helpers', fallback: Path::helpers()),
-            filter : $this->modelsFilter(),
         );
     }
 
