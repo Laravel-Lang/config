@@ -10,7 +10,7 @@ readonly class RouteConfig
 {
     public function __construct(
         public RouteNameConfig $name,
-        public RouteGroupMiddlewareConfig $groupMiddleware,
+        public RouteMiddlewareConfig $middlewares,
         #[Config('localization_routes.prefix')]
         public ?string $prefix,
         #[Config('localization_routes.redirect')]
