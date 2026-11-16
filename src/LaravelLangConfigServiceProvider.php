@@ -24,11 +24,6 @@ class LaravelLangConfigServiceProvider extends BaseServiceProvider
     {
         $this->registerConfig($this->publishable);
         $this->registerConfig($this->hidden);
-
-        $this->mergeConfigFrom(
-            path: __DIR__ . "/../config/localization_private.php",
-            key : 'localization_private'
-        );
     }
 
     public function boot(): void
