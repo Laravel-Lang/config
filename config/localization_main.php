@@ -29,4 +29,17 @@ return [
         // \LaravelLang\LocaleList\Locale::German->value => 'de-DE',
         // \LaravelLang\LocaleList\Locale::GermanSwitzerland->value => 'de-CH',
     ],
+
+    /*
+     * Позволяет исключать из обработки файлы и папки по маске.
+     * 
+     * Применяется как к исходным файлам, так и к целевым.
+     * 
+     * Имеет приоритет над `force`.
+     */
+
+    'skip' => [
+        '*/http-statuses.php',
+        '*some/package/*',
+    ],
 ];
