@@ -59,20 +59,20 @@ return [
         // This option contains settings for routes without the prefix of the localization code.
 
         'default' => [
-            LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
-            LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
-            LaravelLang\Routes\Middlewares\LocalizationBySession::class,
-            LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+            LaravelLang\Routes\Middlewares\LocalizationByCookieMiddleware::class,
+            LaravelLang\Routes\Middlewares\LocalizationByHeaderMiddleware::class,
+            LaravelLang\Routes\Middlewares\LocalizationBySessionMiddleware::class,
+            LaravelLang\Routes\Middlewares\LocalizationByModelMiddleware::class,
         ],
 
         // This option contains settings for routes with the prefix of the localization code.
 
         'prefix' => [
-            LaravelLang\Routes\Middlewares\LocalizationByParameterPrefix::class,
-            LaravelLang\Routes\Middlewares\LocalizationByCookie::class,
-            LaravelLang\Routes\Middlewares\LocalizationByHeader::class,
-            LaravelLang\Routes\Middlewares\LocalizationBySession::class,
-            LaravelLang\Routes\Middlewares\LocalizationByModel::class,
+            LaravelLang\Routes\Middlewares\LocalizationByParameterPrefixMiddlewareMiddleware::class,
+            LaravelLang\Routes\Middlewares\LocalizationByCookieMiddleware::class,
+            LaravelLang\Routes\Middlewares\LocalizationByHeaderMiddleware::class,
+            LaravelLang\Routes\Middlewares\LocalizationBySessionMiddleware::class,
+            LaravelLang\Routes\Middlewares\LocalizationByModelMiddleware::class,
         ],
     ],
 ];
