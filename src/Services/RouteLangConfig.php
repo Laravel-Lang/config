@@ -6,11 +6,11 @@ namespace LaravelLang\Config\Services;
 
 use Illuminate\Container\Attributes\Config;
 
-readonly class RouteConfig
+readonly class RouteLangConfig
 {
     public function __construct(
-        public RouteNameConfig $name,
-        public RouteMiddlewareConfig $middlewares,
+        public RouteNameLangConfig $name,
+        public RouteMiddlewareLangConfig $middlewares,
         #[Config('localization_routes.prefix')]
         public ?string $prefix,
         #[Config('localization_routes.redirect')]

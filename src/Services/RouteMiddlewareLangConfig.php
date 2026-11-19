@@ -6,7 +6,7 @@ namespace LaravelLang\Config\Services;
 
 use Illuminate\Container\Attributes\Config;
 
-readonly class RouteMiddlewareConfig
+readonly class RouteMiddlewareLangConfig
 {
     public function __construct(
         #[Config('localization_routes.middlewares.default')]

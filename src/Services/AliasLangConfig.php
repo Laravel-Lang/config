@@ -9,7 +9,7 @@ use LaravelLang\LocaleList\Locale;
 
 use function config;
 
-readonly class AliasConfig
+readonly class AliasLangConfig
 {
     public function from(Locale|string|null $value): ?string
     {

@@ -6,7 +6,7 @@ namespace LaravelLang\Config\Services;
 
 use Illuminate\Container\Attributes\Config;
 
-readonly class ModelConfig
+readonly class ModelLangConfig
 {
     public function __construct(
         #[Config('localization_models.suffix')]

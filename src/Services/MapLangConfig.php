@@ -9,7 +9,7 @@ use LaravelLang\LocaleList\Locale;
 
 use function Illuminate\Support\enum_value;
 
-readonly class MapConfig
+readonly class MapLangConfig
 {
     public function __construct(
         #[Config('localization_map.locales')]
