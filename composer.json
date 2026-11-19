@@ -65,7 +65,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelLang\\Config\\LaravelLangConfigServiceProvider"
+                "LaravelLang\\Config\\LangConfigServiceProvider"
             ]
         }
     },
