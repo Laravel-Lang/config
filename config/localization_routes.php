@@ -7,12 +7,12 @@ declare(strict_types=1);
  *
  * @see https://laravel-lang.com/configuration.html#routes
  */
+use LaravelLang\Config\Constants\RouteName;
 use LaravelLang\Routes\Middlewares\LocalizationByCookieMiddleware;
 use LaravelLang\Routes\Middlewares\LocalizationByHeaderMiddleware;
-use LaravelLang\Routes\Middlewares\LocalizationBySessionMiddleware;
 use LaravelLang\Routes\Middlewares\LocalizationByModelMiddleware;
 use LaravelLang\Routes\Middlewares\LocalizationByParameterPrefixMiddlewareMiddleware;
-use LaravelLang\Config\Constants\RouteName;
+use LaravelLang\Routes\Middlewares\LocalizationBySessionMiddleware;
 
 return [
     /*
