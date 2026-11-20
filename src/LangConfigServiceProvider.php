@@ -34,7 +34,7 @@ class LangConfigServiceProvider extends BaseServiceProvider
 
         foreach ($this->publishable as $filename) {
             $this->publishes([
-                __DIR__ . "/../config/$filename.php",
+                __DIR__ . "/../config/$filename.php" => $this->app->configPath("$filename.php"),
             ], ['config', 'localization', $filename]);
         }
     }
