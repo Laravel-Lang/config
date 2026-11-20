@@ -7,7 +7,11 @@ declare(strict_types=1);
  *
  * @see https://laravel-lang.com/configuration.html#routes
  */
-
+use LaravelLang\Routes\Middlewares\LocalizationByCookieMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByHeaderMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationBySessionMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByModelMiddleware;
+use LaravelLang\Routes\Middlewares\LocalizationByParameterPrefixMiddlewareMiddleware;
 use LaravelLang\Config\Constants\RouteName;
 
 return [
@@ -59,20 +63,20 @@ return [
         // This option contains settings for routes without the prefix of the localization code.
 
         'default' => [
-            LaravelLang\Routes\Middlewares\LocalizationByCookieMiddleware::class,
-            LaravelLang\Routes\Middlewares\LocalizationByHeaderMiddleware::class,
-            LaravelLang\Routes\Middlewares\LocalizationBySessionMiddleware::class,
-            LaravelLang\Routes\Middlewares\LocalizationByModelMiddleware::class,
+            LocalizationByCookieMiddleware::class,
+            LocalizationByHeaderMiddleware::class,
+            LocalizationBySessionMiddleware::class,
+            LocalizationByModelMiddleware::class,
         ],
 
         // This option contains settings for routes with the prefix of the localization code.
 
         'prefix' => [
-            LaravelLang\Routes\Middlewares\LocalizationByParameterPrefixMiddlewareMiddleware::class,
-            LaravelLang\Routes\Middlewares\LocalizationByCookieMiddleware::class,
-            LaravelLang\Routes\Middlewares\LocalizationByHeaderMiddleware::class,
-            LaravelLang\Routes\Middlewares\LocalizationBySessionMiddleware::class,
-            LaravelLang\Routes\Middlewares\LocalizationByModelMiddleware::class,
+            LocalizationByParameterPrefixMiddlewareMiddleware::class,
+            LocalizationByCookieMiddleware::class,
+            LocalizationByHeaderMiddleware::class,
+            LocalizationBySessionMiddleware::class,
+            LocalizationByModelMiddleware::class,
         ],
     ],
 ];
