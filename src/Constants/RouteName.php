@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LaravelLang\Config\Constants;
 
-class RouteName
+final readonly class RouteName
 {
     public const string Column    = 'locale';
     public const string Cookie    = 'Accept-Language';

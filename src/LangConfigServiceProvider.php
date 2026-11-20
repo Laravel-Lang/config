@@ -6,7 +6,7 @@ namespace LaravelLang\Config;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
-class LangConfigServiceProvider extends BaseServiceProvider
+final class LangConfigServiceProvider extends BaseServiceProvider
 {
     protected array $publishable = [
         'localization_main',
