@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 final class LangConfigServiceProvider extends BaseServiceProvider
 {
+    /** @var list<string> */
     protected array $publishable = [
         'localization_main',
         'localization_map',
@@ -16,6 +17,7 @@ final class LangConfigServiceProvider extends BaseServiceProvider
         'localization_routes',
     ];
 
+    /** @var list<string> */
     protected array $hidden = [
         'localization_map',
     ];
@@ -39,6 +41,7 @@ final class LangConfigServiceProvider extends BaseServiceProvider
         }
     }
 
+    /** @param list<string> $files */
     protected function registerConfig(array $files): void
     {
         foreach ($files as $filename) {

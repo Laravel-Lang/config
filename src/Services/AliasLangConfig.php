@@ -47,6 +47,7 @@ readonly class AliasLangConfig
         return $value;
     }
 
+    /** @return Collection<string, string> */
     protected function items(): Collection
     {
         return config()->collection('localization_main.aliases');

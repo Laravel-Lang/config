@@ -12,7 +12,7 @@ readonly class RouteLangConfig
         public RouteNameLangConfig $name,
         public RouteMiddlewareLangConfig $middlewares,
         #[Config('localization_routes.prefix')]
-        public ?string $prefix,
+        public string $prefix,
         #[Config('localization_routes.redirect')]
         public bool $redirect,
         #[Config('localization_routes.hide')]

@@ -8,6 +8,7 @@ use Illuminate\Container\Attributes\Config;
 
 readonly class ModelLangConfig
 {
+    /** @param array<array-key, string> $directories */
     public function __construct(
         #[Config('localization_models.suffix')]
         public string $suffix,

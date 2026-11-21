@@ -8,6 +8,10 @@ use Illuminate\Container\Attributes\Config;
 
 readonly class RouteMiddlewareLangConfig
 {
+    /**
+     * @param  array<array-key, string>  $default
+     * @param  array<array-key, string>  $prefix
+     */
     public function __construct(
         #[Config('localization_routes.middlewares.default')]
         public array $default,
