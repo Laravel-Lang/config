@@ -6,6 +6,7 @@ namespace LaravelLang\Config\Services;
 
 use Illuminate\Support\Collection;
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\Locales\Facades\Locales;
 use LaravelLang\NativeLocaleNames\LocaleData;
 
 use function config;
@@ -40,11 +41,7 @@ readonly class AliasLangConfig
 
     protected function stringify(Locale|string|null $value): ?string
     {
-        if ($value instanceof Locale) {
-            return $value->value;
-        }
-
-        return $value;
+        return Locales::normalize($value);
     }
 
     /** @return Collection<string, string> */
