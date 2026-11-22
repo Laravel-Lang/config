@@ -5,23 +5,16 @@
     "type": "library",
     "keywords": [
         "laravel-lang",
-        "lang",
-        "languages",
-        "laravel",
-        "locale",
+        "i18n",
         "locales",
         "localization",
-        "localizations",
-        "translation",
         "translations",
-        "config",
-        "settings"
+        "config"
     ],
     "authors": [
         {
             "name": "Andrey Helldar",
-            "email": "helldar@dragon-code.pro",
-            "homepage": "https://dragon-code.pro"
+            "email": "helldar@dragon-code.pro"
         },
         {
             "name": "Laravel-Lang Team",
@@ -29,15 +22,12 @@
         }
     ],
     "require": {
-        "php": "^8.1",
-        "archtechx/enums": "^1.0",
-        "illuminate/config": "^10.0 || ^11.0 || ^12.0 || ^13.0 || dev-master",
-        "illuminate/support": "^10.0 || ^11.0 || ^12.0 || ^13.0 || dev-master",
-        "laravel-lang/locale-list": "^1.6"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^8.23 || ^9.1 || ^10.0 || ^11.0",
-        "pestphp/pest": "^2.34 || ^3.0"
+        "php": "^8.3",
+        "illuminate/container": "^12.0 || ^13.0 || dev-master",
+        "illuminate/support": "^12.0 || ^13.0 || dev-master",
+        "laravel-lang/locale-list": "self.version",
+        "laravel-lang/locale-names": "self.version",
+        "laravel-lang/locales": "self.version"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -46,19 +36,7 @@
             "LaravelLang\\Config\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
     "config": {
-        "allow-plugins": {
-            "dragon-code/codestyler": true,
-            "ergebnis/composer-normalize": true,
-            "friendsofphp/php-cs-fixer": true,
-            "pestphp/pest-plugin": true,
-            "symfony/thanks": true
-        },
         "preferred-install": "dist",
         "sort-packages": true
     },
@@ -68,8 +46,5 @@
                 "LaravelLang\\Config\\LangConfigServiceProvider"
             ]
         }
-    },
-    "scripts": {
-        "test": "vendor/bin/pest"
     }
 }
