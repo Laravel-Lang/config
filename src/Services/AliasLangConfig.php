@@ -6,8 +6,8 @@ namespace LaravelLang\Config\Services;
 
 use Illuminate\Support\Collection;
 use LaravelLang\LocaleList\Locale;
+use LaravelLang\LocaleNames\LocaleData;
 use LaravelLang\Locales\Facades\Locales;
-use LaravelLang\NativeLocaleNames\LocaleData;
 
 use function config;
 
