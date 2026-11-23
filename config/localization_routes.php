@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * This option defines the application's route settings.
  *
- * @see https://laravel-lang.com/20.x/routes
+ * @see https://laravel-lang.com/routes
  */
 
 use LaravelLang\Config\Constants\RouteName;

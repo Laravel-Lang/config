@@ -22,7 +22,7 @@ return [
      *
      * Specify here mappings of localizations with your project.
      *
-     * @see https://laravel-lang.com/20.x/configure#locale-aliases
+     * @see https://laravel-lang.com/configure#locale-aliases
      */
 
     'aliases' => [
