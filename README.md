@@ -12,7 +12,7 @@ We also have official [chats](https://t.me/addlist/l0XGtvEIBiljMTMy) in Telegram
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://laravel-lang.com/contributions.html) for details.
+Please see [CONTRIBUTING](https://laravel-lang.com/20.x/contributing) for details.
 
 ## Support Us
 
@@ -20,7 +20,7 @@ Please see [CONTRIBUTING](https://laravel-lang.com/contributions.html) for detai
 
 ## License
 
-This package is licensed under the [MIT License](https://laravel-lang.com/license.html).
+This package is licensed under the [MIT License](https://laravel-lang.com/20.x/license).
 
 [badge_downloads]: https://img.shields.io/packagist/dt/laravel-lang/config.svg?style=flat-square
 [badge_license]: https://img.shields.io/packagist/l/laravel-lang/config.svg?style=flat-square

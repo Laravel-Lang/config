@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This option defines settings for working with model translations.
  *
- * @see https://laravel-lang.com/configuration.html#models
+ * @see https://laravel-lang.com/20.x/models
  */
 
 return [
