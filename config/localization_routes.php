@@ -39,9 +39,7 @@ return [
     /*
      * This option specifies the prefix of route group names.
      *
-     * Also, use `''` instead of `null`.
-     *
-     * By default, `localized.`
+     * An empty string uses the default prefix, `localized.`.
      */
 
     'prefix' => env('LOCALIZATION_PREFIX', 'localized.'),
