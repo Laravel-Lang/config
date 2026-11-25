@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 return [
     /*
-     * Определяет порядок применения стилей переводов.
-     *
-     * Объединение происходит по правилам функции `array_merge()`.
-     *
-     * Стиль `default` применяется всегда в качестве базового.
+     * Lists the translation styles in the order they are applied to each dictionary.
+     * Later styles override matching keys from earlier styles. If `default` is
+     * omitted, Publisher adds it at the beginning.
      */
 
     'styles' => [
@@ -17,10 +15,8 @@ return [
     ],
 
     /*
-     * The language codes chosen for the files in this repository may not
-     * match the preferences for your project.
-     *
-     * Specify here mappings of localizations with your project.
+     * Maps canonical locale codes to aliases used by your application.
+     * Published translations use the canonical codes.
      *
      * @see https://laravel-lang.com/configure#locale-aliases
      */
@@ -31,11 +27,10 @@ return [
     ],
 
     /*
-     * Позволяет исключать из обработки файлы и папки по маске.
-     *
-     * Применяется как к исходным файлам, так и к целевым.
-     *
-     * Имеет приоритет над `force`.
+     * Excludes source files, style dictionaries, and publication targets from publishing.
+     * Use `*` wildcards in case-insensitive patterns matched against full paths
+     * with `/` separators.
+     * These exclusions take precedence over `force`.
      */
 
     'skip' => [
@@ -44,9 +39,8 @@ return [
     ],
 
     /*
-     * Позволяет принудительно разрешать к установке переводы, предназначенные для других библиотек или их версий.
-     *
-     * Указывается название библиотеки.
+     * Lists Composer package names that bypass the dependency, version, and root
+     * project name checks when Publisher reads translation manifests.
      */
 
     'force' => [

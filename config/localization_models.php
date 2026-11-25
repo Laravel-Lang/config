@@ -3,41 +3,38 @@
 declare(strict_types=1);
 
 /*
- * This option defines settings for working with model translations.
+ * Settings for Eloquent model translations.
  *
  * @see https://laravel-lang.com/models
  */
 
 return [
     /*
-     * This option specifies a suffix for models containing translations.
-     *
-     * For example,
-     *   main model is `App\Models\Page`
-     *   translation model is `App\Models\PageTranslation`
-     *
-     * By default, `Translation`
+     * Suffix appended to a model's class name to find or generate its translation model.
+     * For example, `App\Models\Page` uses `App\Models\PageTranslation` by default.
      */
 
     'suffix' => 'Translation',
 
     /*
-     * This option determines the need to filter localizations loaded
-     * in the relay when using eager loading.
-     *
-     * By default, true.
+     * Limit the `translations()` relation to the current and fallback locales.
+     * Disable filtering to query other locales through this relation.
      */
 
     'filter' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+
+    /*
+     * Directories scanned for Eloquent models by `make:model-translation`
+     * and `lang:models-helper`. Add paths for models outside `app/Models`.
+     */
 
     'directories' => [
         app_path('Models'),
     ],
 
     /*
-     * This option specifies a folder to store helper files for the IDE.
-     *
-     * By default, `vendor/_laravel_lang`
+     * Directory for generated IDE helper files. Running `lang:models-helper`
+     * without a model argument removes this directory before regenerating the files.
      */
 
     'helpers' => env('VENDOR_PATH', base_path('vendor/_laravel_lang')),

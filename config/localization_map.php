@@ -6,6 +6,12 @@ use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale;
 
 return [
+    /*
+     * Locale metadata keyed by canonical locale code for use in application templates and formatters.
+     * Each entry provides a script code (`type`) and a locale identifier for regional formatting (`regional`).
+     * The optional `direction` field provides a text direction as a `Direction` enum case.
+     */
+
     'locales' => [
         Locale::Afrikaans->value => [
             'type'     => 'Latn',
