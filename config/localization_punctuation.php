@@ -5,7 +5,15 @@ declare(strict_types=1);
 use LaravelLang\LocaleList\Locale;
 
 return [
+    /*
+     * Enables typographic quotes, dashes, and ellipses when translations are published.
+     */
+
     'enabled' => (bool) env('LOCALIZATION_PUNCTUATION_ENABLED', false),
+
+    /*
+     * Default opening and closing marks for double and single quotes.
+     */
 
     'common' => [
         'double_quote_opener' => '“',
@@ -14,10 +22,15 @@ return [
         'single_quote_closer' => '’',
     ],
 
+    /*
+     * Quote mark overrides keyed by canonical locale code. Omitted marks use the
+     * corresponding values from `common`.
+     */
+
     'locales' => [
         Locale::French->value => [
-            // A real U+00A0, written as an escape so it stays visible: an HTML entity
-            // would be published verbatim into the lang files.
+            // Use U+00A0 escapes to make the non-breaking spaces visible in the config.
+            // HTML entities would be written verbatim to the translation files.
             'double_quote_opener' => "«\u{a0}",
             'double_quote_closer' => "\u{a0}»",
             'single_quote_opener' => '‘',
