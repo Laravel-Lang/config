@@ -5,50 +5,29 @@
     "type": "library",
     "keywords": [
         "laravel-lang",
-        "lang",
-        "languages",
-        "laravel",
-        "locale",
+        "i18n",
         "locales",
         "localization",
-        "localizations",
-        "translation",
         "translations",
-        "config",
-        "settings"
+        "config"
     ],
     "authors": [
         {
             "name": "Andrey Helldar",
-            "email": "helldar@dragon-code.pro",
-            "homepage": "https://dragon-code.pro"
+            "email": "helldar@dragon-code.pro"
         },
         {
             "name": "Laravel-Lang Team",
             "homepage": "https://laravel-lang.com"
         }
     ],
-    "funding": [
-        {
-            "type": "boosty",
-            "url": "https://boosty.to/dragon-code"
-        },
-        {
-            "type": "yoomoney",
-            "url": "https://yoomoney.ru/to/410012608840929"
-        }
-    ],
     "require": {
-        "php": "^8.2",
-        "archtechx/enums": "^1.0",
-        "illuminate/config": "^11.0 || ^12.0 || ^13.0",
-        "illuminate/support": "^11.0 || ^12.0 || ^13.0",
-        "laravel-lang/locale-list": "^1.5",
-        "spatie/laravel-data": "^4.15"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^9.1 || ^10.0 || ^11.0",
-        "pestphp/pest": "^3.0 || ^4.0"
+        "php": "^8.3",
+        "illuminate/container": "^12.0 || ^13.0 || dev-master",
+        "illuminate/support": "^12.0 || ^13.0 || dev-master",
+        "laravel-lang/locale-list": "self.version",
+        "laravel-lang/locale-names": "self.version",
+        "laravel-lang/locales": "self.version"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -57,32 +36,15 @@
             "LaravelLang\\Config\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
     "config": {
-        "allow-plugins": {
-            "dragon-code/codestyler": true,
-            "ergebnis/composer-normalize": true,
-            "friendsofphp/php-cs-fixer": true,
-            "laravel/pint": true,
-            "pestphp/pest-plugin": true,
-            "symfony/thanks": true
-        },
         "preferred-install": "dist",
         "sort-packages": true
     },
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelLang\\Config\\LaravelLangConfigServiceProvider"
+                "LaravelLang\\Config\\LangConfigServiceProvider"
             ]
         }
-    },
-    "scripts": {
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage"
     }
 }

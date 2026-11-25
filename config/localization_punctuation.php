@@ -2,15 +2,6 @@
 
 declare(strict_types=1);
 
-/**
- * This option determines the mechanism for converting translation
- * keys into a typographic version.
- *
- * @see https://laravel-lang.com/configuration.html#punctuation
- *
- * By default, false
- */
-
 use LaravelLang\LocaleList\Locale;
 
 return [

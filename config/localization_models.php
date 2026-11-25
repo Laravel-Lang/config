@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-/**
+/*
  * This option defines settings for working with model translations.
  *
- * @see https://laravel-lang.com/configuration.html#models
+ * @see https://laravel-lang.com/models
  */
+
 return [
     /*
      * This option specifies a suffix for models containing translations.
@@ -21,22 +22,16 @@ return [
     'suffix' => 'Translation',
 
     /*
-     * This option specifies the path to the folder where the model files should be located.
-     *
-     * By default, app/Models
-     */
-
-    'directory' => app_path('Models'),
-
-    /*
      * This option determines the need to filter localizations loaded
      * in the relay when using eager loading.
      *
      * By default, true.
      */
 
-    'filter' => [
-        'enabled' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+    'filter' => (bool) env('LOCALIZATION_FILTER_ENABLED', true),
+
+    'directories' => [
+        app_path('Models'),
     ],
 
     /*

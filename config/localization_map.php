@@ -6,14 +6,7 @@ use LaravelLang\LocaleList\Direction;
 use LaravelLang\LocaleList\Locale;
 
 return [
-    'plugins'  => [],
-    'packages' => [],
-
-    'models' => [
-        'directory' => base_path('app'),
-    ],
-
-    'meta' => [
+    'locales' => [
         Locale::Afrikaans->value => [
             'type'     => 'Latn',
             'regional' => 'af_ZA',
@@ -196,6 +189,11 @@ return [
             'regional' => 'de_DE',
         ],
 
+        Locale::GermanAustria->value => [
+            'type'     => 'Latn',
+            'regional' => 'de_AT',
+        ],
+
         Locale::GermanSwitzerland->value => [
             'type'     => 'Latn',
             'regional' => 'de_CH',
@@ -209,6 +207,11 @@ return [
         Locale::Gujarati->value => [
             'type'     => 'Gujr',
             'regional' => 'gu_IN',
+        ],
+
+        Locale::HaitianCreole->value => [
+            'type'     => 'Latn',
+            'regional' => 'fr_HT',
         ],
 
         Locale::Hausa->value => [
