@@ -12,7 +12,7 @@
 
 ## Documentation
 
-See the [documentation](https://laravel-lang.com/start) for detailed information.
+[Configure Laravel Lang in your application.](https://laravel-lang.com/configure)
 
 ## Contributing
 
